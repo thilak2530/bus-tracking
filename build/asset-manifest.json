@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/bus-tracking/static/js/main.ff7f23a4.js",
+    "index.html": "/bus-tracking/index.html",
+    "main.ff7f23a4.js.map": "/bus-tracking/static/js/main.ff7f23a4.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.ff7f23a4.js"
+  ]
+}
