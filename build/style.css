@@ -85,19 +85,14 @@
     margin-top: 30px;
 }
 .box input{
-    
-    height: 56px;
-    padding-left: 20px;
+    padding-left: 15px;
+    height: 56px;  
     margin-top: 10px;
     border: 0.6px solid #282828 ;
     border-radius: 6px;  
     
 }
-.box #user{
-    width: 96%;
-    min-width: 230px;
-    max-width: 520px;
-}
+
 
 #box input{
     background-color: black;
@@ -125,7 +120,7 @@ input::placeholder{
 }
 .inputbox{
     width: 100%;
-    min-width: 250px;
+    min-width: 241px;
     max-width: 519px;
     display: flex;
     align-items: center;

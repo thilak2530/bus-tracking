@@ -100,7 +100,7 @@ function Login(){
                             
                             <div className="box" id="box">
                                 <div className="inputbox">
-                                    <input type="submit" value="Login" />   
+                                    <input id="button" type="submit" value="Login" />   
                                 </div>
                             </div>
                         </form>
