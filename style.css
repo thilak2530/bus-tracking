@@ -26,6 +26,7 @@
 
 }
 
+
  h3{
     font-size: 32px;
     font-weight: 800;
@@ -86,20 +87,26 @@
 }
 .box input{
     padding-left: 15px;
-    height: 56px;  
+    height: 57px;  
     margin-top: 10px;
-    border: 0.6px solid #282828 ;
-    border-radius: 6px;  
+    border: 0.6px solid #282828;
+    border-radius: 6px; 
+    width: 290px; 
+    
     
 }
 
 
-#box input{
-    background-color: black;
-    color: white;
-    width: 100%;
-    min-width: 250px;
-    max-width: 519px;
+.inputbox #button {
+    background-color:black;
+    color: white; 
+    width: 520px;
+    min-width: 241.2px;
+    max-width: 540px;
+    border: none;
+    height: 60px;
+    padding-left: 0px;
+    cursor: pointer;
     
 }
 .check{
