@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 export function Home1(props){
     return(
-        <div className="sideboxlist" id={props.names}>
-            
-            <a href=""><img  src={props.img}  /></a>
-            <a href="https://www.google.co.in" ><p>{props.names}</p></a>
+        <div className="sideboxmain">
+            <div className="sideboxlist" id={props.names}>          
+                <Link to={props.link} ><img  src={props.img}  /></Link>
+                <Link to={props.link} onClick={props.button}><p>{props.names}</p></Link>
+            </div>
         </div>
     );
 }

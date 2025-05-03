@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom"
+
 export const info=[
     {
         listname:"Home",
-        img: `${process.env.PUBLIC_URL}/homeimg/home_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`
+        img: `${process.env.PUBLIC_URL}/homeimg/home_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`,
+        
+        
     },
     {
         listname:"Pass",

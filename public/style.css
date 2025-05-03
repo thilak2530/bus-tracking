@@ -4,11 +4,10 @@
 *{
     margin: 0px;
     padding: 0px;
-   
-    
+    font-family: "Poppins", sans-serif;
 }
 .login{
-    height: 120vh;
+    height: 120vh;  
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -91,9 +90,12 @@
     margin-top: 10px;
     border: 0.6px solid #282828;
     border-radius: 6px; 
-    width: 290px; 
+    width: 100%; 
     
     
+}
+.inputbox #user{
+    width: 100%;
 }
 
 
@@ -138,7 +140,7 @@ input::placeholder{
    
 }
 .abc{
-    min-width: 250px;
+    min-width: 241px;
     max-width: 519px;
     display: flex;
     align-items: center;
