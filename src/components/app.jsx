@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./home";
+import Setting from "./setting";
 
 
 function App(){
@@ -10,6 +11,7 @@ function App(){
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />  
+                <Route path="/reset" element={<Setting />} />
             </Routes>
         </Router>
     );

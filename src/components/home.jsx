@@ -1,14 +1,16 @@
 import React from "react";
-
 import { Home1, Otherbus } from "./home1";
 import { info, otherbusinfo } from "./info";
-import { useNavigate } from "react-router-dom"; 
+import { useLocation, useNavigate } from "react-router-dom"; 
 import { Link } from "react-router-dom";
+import Setting from "./setting";
+
+
 
 
 
 function Home(){
-    
+        const username = localStorage.getItem("username");
         const navigate = useNavigate();
         function goToLogin(){
             navigate("/"); 
@@ -19,18 +21,49 @@ function Home(){
             if (rightside) {
                 rightside.style.display = "none";
                 const sidebox = document.getElementsByClassName("sidebox")[0];
-                sidebox.style.display = "block";
-            }
+                if (window.innerWidth <= 440) {
+                    if (sidebox) sidebox.style.display = "flex";
+                }
+                if (window.innerWidth >= 440) {
+                    if (rightside) rightside.style.display = "flex";
+                }
+            }     
         }
         function home(){
             const home=document.getElementsByClassName("rightside")[0];
             if(home){
                 home.style.display="block";
+                const settings=document.getElementsByClassName("settings")[0];
+                settings.style.display="none";
                 const sidebox = document.getElementsByClassName("sidebox")[0];
-                sidebox.style.display = "none";
+                if (window.innerWidth <= 440) {
+                    if (sidebox) sidebox.style.display = "none";
+                } else {
+                    if (sidebox) sidebox.style.display = "flex";
+                }
             }
         }
-    
+        function setting(){
+            const settings=document.getElementsByClassName("settings")[0];
+            
+            if(settings){
+                settings.style.display="flex";
+                const rightside = document.getElementsByClassName("rightside")[0];
+                rightside.style.display = "none";
+                const sidebox = document.getElementsByClassName("sidebox")[0];
+                
+                
+                    if (sidebox) sidebox.style.display = "none"; 
+                
+                if (window.innerWidth >= 440) {
+                    if (sidebox) sidebox.style.display = "flex";  
+                }
+            }
+ 
+        }
+        
+
+        
 
     
     return <div className="homepage">
@@ -40,7 +73,7 @@ function Home(){
               
                 <div className="userinfo">
                     <img src={`${process.env.PUBLIC_URL}/homeimg/busimg.png`} alt="" />
-                    <h2>Thilak Gaddam</h2>
+                    <h2>{username}</h2>
                 </div>
                 <Home1 
                     names={info[0].listname}
@@ -61,6 +94,7 @@ function Home(){
                 <Home1 
                     names={info[3].listname}
                     img={info[3].img}
+                    button={setting}
                     
                 />
                 <Home1 
@@ -75,7 +109,7 @@ function Home(){
                 </div>  
                 <div className="mainbox">      
                     <div className="aaa">
-                            <h1>Hey Thilak,<br />here is your bus</h1>
+                            <h1>Hey {username},<br />here is your bus</h1>
                             <h2>My bus</h2>
                             <div className="ourbus">
                                 <img className="busimg" src={`${process.env.PUBLIC_URL}/homeimg/busimg.png`} alt="" />
@@ -132,6 +166,9 @@ function Home(){
                         </div>     
                     </div>                       
                 </div>
+            </div>
+            <div className="settings">
+                <Setting />
             </div>
         </div>
     </div>

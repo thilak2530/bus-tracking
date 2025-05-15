@@ -7,7 +7,7 @@
     font-family: "Poppins", sans-serif;
 }
 .login{
-    height: 120vh;  
+    height: 100vh;  
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -82,7 +82,7 @@
     font-family: "Poppins", sans-serif;  
 }
 .box{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .box input{
     padding-left: 15px;
@@ -106,7 +106,7 @@
     min-width: 241.2px;
     max-width: 540px;
     border: none;
-    height: 60px;
+    height: 45px;
     padding-left: 0px;
     cursor: pointer;
     
@@ -205,5 +205,33 @@ input::placeholder{
         font-size: 12px;
         font-weight: 300;
         font-family: "Poppins", sans-serif;  
+    }
+    .box{
+        margin-top: 15px;
+    }
+    .signBox{
+        width: 80%;
+        max-width: 644px;
+        min-width: 300px;
+        height: 600px;
+       background-color: white;
+       border-radius: 10px;
+       border: 0.5 solid #878787;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    .inputbox #button {
+        background-color:black;
+        color: white; 
+        width: 520px;
+        min-width: 241.2px;
+        max-width: 540px;
+        border: none;
+        height: 45px;
+        padding-left: 0px;
+        cursor: pointer;
+        
+        
     }
 }

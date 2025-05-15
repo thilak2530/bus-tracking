@@ -34,8 +34,8 @@ function Login(){
             });
             
             if (response.data.success) {
-               navigate("/home");
-
+                localStorage.setItem("username", name1);
+                navigate("/home");
             } else{
                 
                 fname("");
@@ -109,6 +109,7 @@ function Login(){
 
             </div>
         </div>
+        
 
         
 

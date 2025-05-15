@@ -3,6 +3,7 @@ import bodyParser from "body-parser"
 import cors from "cors";
 import pg from "pg";
 
+
 const app = express();
 const port = 3001;
 
@@ -16,8 +17,8 @@ const db = new pg.Client({
 });
 
 db.connect()
-    .then(() => console.log("✅ Connected to PostgreSQL"))
-    .catch(err => console.error("❌ Database connection error:", err));
+    .then(() => console.log(" Connected to PostgreSQL"))
+    .catch(err => console.error(" Database connection error:", err));
 
     app.use(cors({ origin: "http://localhost:3000" }));
     app.use(bodyParser.json());  
@@ -44,7 +45,26 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post("/reset", async (req,res) => {
+
+    const{re_username,re_password}=req.body;
+    const { username, password } = req.body;
+    try{      
+        const result=await db.query(
+            "update busss set username=$1,password=$2 where username=$3 AND password=$4",
+            [re_username,re_password,username,password] 
+        );
+        if (result){
+            res.json({ save: true });
+
+        }
+    }
+    catch(err){
+        res.status(500).json({save:false, msg:"e"});
+    }
+})
+
 // Start Server
 app.listen(port, () => {
-    console.log(`🚀 Server running on http://localhost:${port}`);
+    console.log(` Server running on http://localhost:${port}`);
 });
