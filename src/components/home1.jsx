@@ -15,11 +15,37 @@ export function Home1(props){
 
 export function Otherbus(props){
     return(
-        <div className="otherbus">
+        <div className="otherbus" onClick={props.onClick}>
             <img src={props.img} alt="" />
             <h4>NO {props.no}</h4>
         </div>
     );
+}
+
+export function Ourbus(props){
+            function bus_time(){
+                const rightside = document.getElementsByClassName("rightside")[0];
+                rightside.style.display = "none";
+                const bus_timings = document.getElementsByClassName("bus-timings")[0];
+                bus_timings.style.display = "block";
+                
+            }
+    
+    return(
+        <div className="ourbus">
+        <img className="busimg" src={props.img} alt="" />
+        <div className="businfo">
+            <h4>NO {props.noo}</h4>
+            <p>Arriving in{}</p>
+            <div className="buttons">
+                <button onClick={bus_time}>Bus Timing</button>
+                <button >Messages</button>
+                <button >Track Your Bus</button>
+            </div>
+        </div>                  
+    </div>  
+    );
+
 }
 
    

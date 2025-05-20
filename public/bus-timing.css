@@ -1,0 +1,61 @@
+
+.bus-timings{
+    height: 85vh;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+     
+}
+.timings-main{
+  
+    width: 100%; 
+}
+.timings{
+    margin-top: 8.5vh;
+    margin-bottom: 8.5vh;
+    margin-left: 17.25%;
+    margin-right: 17.25%;
+    height:58vh;
+    width: 65%;
+    background-color: rgb(184, 179, 157);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;padding-top: 80px;
+    scrollbar-width: none;
+}
+table{
+    width: 100%;
+    border-collapse: collapse; 
+    text-align: center;
+    border-radius: 20px;
+}
+th:nth-child(1){
+    width: 50%;
+}
+th:nth-child(2){
+    width: 25%;
+}
+th:nth-child(3){
+    width: 25%;
+}
+
+table,tr,td,th{
+    border: 2px solid black;
+    height: 50px;
+    min-height: 30px;
+    max-height: 50px;
+   
+    
+}
+.ooo{
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+}

@@ -96,7 +96,7 @@ function Setting(){
                     <form className="setting-form" method="post" onSubmit={save}>
                         
                         <div className="center-box">
-                            <p>reset username:</p>
+                            <p>reset username :</p>
                             <div className="abcd">
                                 <div id="div1">
                                     <input className="input" type="text" onChange={re_user_1} name="reset-username" value={re_user} required/>
@@ -107,7 +107,7 @@ function Setting(){
                                 <input className="input" type={showPassword?"text":"password"} onChange={old_pass_1} name="reset-password" value={old_pass} required/>
                                 <div  id={showPassword ? "div1" : "div2"} onClick={togglePasswordVisibility}></div>
                             </div>
-                            <p> new password:</p>
+                            <p> new password :</p>
                             <div className="abc">
                                 <input className="input" type={showPasswor?"text":"password"} onChange={re_pass_1} name="reset-password" value={re_pass} required/>
                                 <div id={showPasswor ? "div3" : "div4"} onClick={togglePasswordVisibilit}></div>
