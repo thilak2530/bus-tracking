@@ -27,12 +27,10 @@ function Setting(){
             const settings = document.getElementsByClassName("settings")[0];
             if (settings) {
                 settings.style.display = "none";
-                const sidebox = document.getElementsByClassName("sidebox")[0];
-                if (window.innerWidth <= 440) {
-                    if (sidebox) sidebox.style.display = "flex";        
-                }
+                const rightside = document.getElementsByClassName("rightside")[0];
+                rightside.style.display = "block";
             }     
-        }
+    }
     
 
     const [re_user,re_user_final]=useState("");
@@ -88,7 +86,7 @@ function Setting(){
     return(
         <div className="sett-main">
             <div className="tink" onClick={open}>
-                    <img src={`${process.env.PUBLIC_URL}/homeimg/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
+                    <img src={`${process.env.PUBLIC_URL}/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
             </div> 
             <div className="sett">
                 <p id="reset-heading"> Reset your Username & password</p>

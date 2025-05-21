@@ -20,7 +20,7 @@ function Home(){
         function open() {
             const rightside = document.getElementsByClassName("rightside")[0];
             if (rightside) {
-                rightside.style.display = "block";
+                rightside.style.display = "none";
                 const sidebox = document.getElementsByClassName("sidebox")[0];
                 if (window.innerWidth <= 440) {
                     if (sidebox) sidebox.style.display = "flex";
@@ -33,7 +33,7 @@ function Home(){
         function home(){
             const home=document.getElementsByClassName("rightside")[0];
             if(home){
-                home.style.display="flex";
+                home.style.display="block";
                 const settings=document.getElementsByClassName("settings")[0];
                 settings.style.display="none";
                 const sidebox = document.getElementsByClassName("sidebox")[0];
