@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Home1, Otherbus ,Ourbus} from "./home1";
-import { info, otherbusinfo } from "./info";
+import { info, otherbusinfo,busTimings } from "./info";
 import { useLocation, useNavigate } from "react-router-dom"; 
 import { Link } from "react-router-dom";
 import Setting from "./setting";
@@ -11,11 +11,16 @@ import Bus_timing from "./bus-timig";
 
 
 function Home(){
+
+
+
         const username = localStorage.getItem("username");
         const navigate = useNavigate();
         function goToLogin(){
             navigate("/"); 
         };
+
+
 
         function open() {
             const rightside = document.getElementsByClassName("rightside")[0];
@@ -30,6 +35,10 @@ function Home(){
                 }
             }     
         }
+
+
+
+
         function home(){
             const home=document.getElementsByClassName("rightside")[0];
             if(home){
@@ -46,6 +55,9 @@ function Home(){
                 }
             }
         }
+
+
+        
         function setting(){
             const settings=document.getElementsByClassName("settings")[0];
             
@@ -70,11 +82,15 @@ function Home(){
 
 
 
+
+
+
         const [selectedNo, setSelectedNo] = useState("1");
         const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/busimg.png`);
         function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img)}
+        const abba=selectedNo;
         
-
+       
         
 
     
@@ -175,7 +191,10 @@ function Home(){
             </div>
 
             <div className="bus-timings">               
-                <Bus_timing />
+                <Bus_timing                
+                    stops1={busTimings} 
+                    abba={abba}
+                />
             </div>
 
 
