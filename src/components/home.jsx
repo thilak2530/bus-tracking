@@ -5,12 +5,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Setting from "./setting";
 import Bus_timing from "./bus-timig";
+import Sidebox from "./sidebox";
 
 
 
 
 
 function Home(){
+
+
+   
 
 
 
@@ -37,58 +41,10 @@ function Home(){
         }
 
 
-
-
-        function home(){
-            const home=document.getElementsByClassName("rightside")[0];
-            if(home){
-                home.style.display="block";
-                const settings=document.getElementsByClassName("settings")[0];
-                settings.style.display="none";
-                const sidebox = document.getElementsByClassName("sidebox")[0];
-                const bus_timings = document.getElementsByClassName("bus-timings")[0];
-                bus_timings.style.display = "none";
-                if (window.innerWidth <= 440) {
-                    if (sidebox) sidebox.style.display = "none";
-                } else {
-                    if (sidebox) sidebox.style.display = "flex";
-                }
-            }
-        }
-
-
-        
-        function setting(){
-            const settings=document.getElementsByClassName("settings")[0];
-            
-            if(settings){
-                settings.style.display="flex";
-                const rightside = document.getElementsByClassName("rightside")[0];
-                rightside.style.display = "none";
-                const sidebox = document.getElementsByClassName("sidebox")[0];
-                
-                
-                if (sidebox) sidebox.style.display = "none"; 
-                
-                if (window.innerWidth >= 440) {
-                    if (sidebox) sidebox.style.display = "flex";  
-                }
-            }
- 
-        }
-
-
-
-
-
-
-
-
-
         const [selectedNo, setSelectedNo] = useState("1");
         const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/busimg.png`);
         function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img)}
-        const abba=selectedNo;
+        
         
        
         
@@ -97,40 +53,7 @@ function Home(){
     return <div className="homepage">
         
         <div className="insidebox">
-            <div className="sidebox">
-              
-                <div className="userinfo">
-                    <img src={`${process.env.PUBLIC_URL}/homeimg/busimg.png`} alt="" />
-                    <h2>{username}</h2>
-                </div>
-                <Home1 
-                    names={info[0].listname}
-                    img={info[0].img}
-                    button={home}
-                    
-                />
-                <Home1 
-                    names={info[1].listname}
-                    img={info[1].img}
-                    
-                />
-                <Home1 
-                    names={info[2].listname}
-                    img={info[2].img}
-                    
-                />
-                <Home1 
-                    names={info[3].listname}
-                    img={info[3].img}
-                    button={setting}
-                    
-                />
-                <Home1 
-                    names={info[5].listname}
-                    img={info[5].img}
-                    link={"/"}
-                />
-            </div>
+            <Sidebox />
             <div className="rightside">
                 <div className="tink" onClick={open}>
                     <img src={`${process.env.PUBLIC_URL}/homeimg/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} /> 
@@ -191,9 +114,7 @@ function Home(){
             </div>
 
             <div className="bus-timings">               
-                <Bus_timing                
-                    stops1={busTimings} 
-                    abba={abba}
+                <Bus_timing                   
                 />
             </div>
 

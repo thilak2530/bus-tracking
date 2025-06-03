@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom"; 
+import { useLocation, useNavigate } from "react-router-dom";
+import Sidebox from "./sidebox"; 
+
+
+
+
 
 
 
 
 function Setting(){
+    const navigate = useNavigate();
+
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswor, setShowPasswor] = useState(false);
@@ -21,15 +28,10 @@ function Setting(){
     };
 
     const username = localStorage.getItem("username");
-    const navigate= useNavigate();
+    
 
     function open() {
-            const settings = document.getElementsByClassName("settings")[0];
-            if (settings) {
-                settings.style.display = "none";
-                const rightside = document.getElementsByClassName("rightside")[0];
-                rightside.style.display = "block";
-            }     
+            navigate("/home")
     }
     
 
@@ -84,6 +86,10 @@ function Setting(){
     }
 
     return(
+
+        <div className="settings-page">
+             <Sidebox />
+
         <div className="sett-main">
             <div className="tink" onClick={open}>
                     <img src={`${process.env.PUBLIC_URL}/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
@@ -128,6 +134,7 @@ function Setting(){
             </div>
 
         </div>
+       </div>
     );
 }
 

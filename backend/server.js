@@ -20,13 +20,13 @@ db.connect()
     .then(() => console.log(" Connected to PostgreSQL"))
     .catch(err => console.error(" Database connection error:", err));
 
-    app.use(cors({ origin: "http://localhost:3000" }));
+    app.use(cors({ origin: ["http://localhost:3000/login" ]}));
     app.use(bodyParser.json());  
     app.use(bodyParser.urlencoded({ extended: true }));
 
 // Login Route
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } = req.body;  
 
   try {
       const result = await db.query(

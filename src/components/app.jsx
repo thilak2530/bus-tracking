@@ -1,7 +1,10 @@
 import React from "react";
 import Login from "./login";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route ,Navigate} from "react-router-dom";
 import Home from "./home";
+import Setting from "./setting";
+import Bus_timing from "./bus-timig";
+import { info, otherbusinfo,busTimings } from "./info";
 
 
 
@@ -9,8 +12,11 @@ function App(){
     return(
         <Router basename="/bus-tracking">
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/home" element={<Home />} /> 
+                <Route path="/setting" element={<Setting />} />
+                <Route path="/home/bus-timings" element={<Bus_timing />} />
             </Routes>
         </Router>
     );  
