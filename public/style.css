@@ -16,11 +16,12 @@
 .container{
    
     background-color: black;
-    background-image: url("./img.jpeg");  
-   
-        width: 100%;
-        height: auto;
-        display: block;
+    background-image: url("./img.jpeg"); 
+    background-position: center; 
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    display: block;
     
 
 }
@@ -50,6 +51,8 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   opacity:1;
+   box-shadow: 6px 6px 6px 1px rgba(86, 81, 71, 0.3);
 }
 .signBox2{
     width: 80%;

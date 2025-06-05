@@ -8,15 +8,15 @@ import { info, otherbusinfo,busTimings } from "./info";
 
 function Bus_timing({ }){
     const location = useLocation();
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const abba = location.state?.abba;
 
 
     const stops1= busTimings;
 
 
-     function open() {
-              navigate("/home")
+    function open() {
+        navigate("/home")
     }
 
         let busData;
