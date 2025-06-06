@@ -1,6 +1,5 @@
-#project-wide
+# Project-wide
 .DS_Store
-
 
 # Logs
 logs
@@ -76,7 +75,7 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files
+# dotenv environment variable files in root
 .env
 .env.development.local
 .env.test.local
@@ -97,8 +96,7 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
+# Uncomment if your project uses Gatsby and not Next.js
 # public
 
 # vuepress build output
@@ -138,3 +136,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# === Specific to your project folders ===
+
+# Backend node_modules and env files
+/backend/node_modules/
+/backend/.env
+
+# Frontend node_modules and env files
+/frontend/node_modules/
+/frontend/.env
