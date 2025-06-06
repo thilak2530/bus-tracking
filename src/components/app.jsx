@@ -10,7 +10,7 @@ import { info, otherbusinfo,busTimings } from "./info";
 
 function App(){
     return(
-        <Router basename="/bus-tracking">
+        <Router >
             <Routes>
                 <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/login" element={<Login />} />
