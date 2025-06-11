@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebox from "./sidebox";
 import { useLocation,useNavigate } from "react-router-dom";
 import { info, otherbusinfo,busTimings } from "./info";
@@ -6,13 +6,20 @@ import { info, otherbusinfo,busTimings } from "./info";
 
 
 
-function Bus_timing({ }){
+function Bus_timing(){
     const location = useLocation();
     const navigate = useNavigate();
     const abba = location.state?.abba;
 
 
     const stops1= busTimings;
+
+      useEffect(() => {
+        if (!abba) {
+            navigate("/home");
+        }
+    }, [abba, navigate]);
+
 
 
     function open() {

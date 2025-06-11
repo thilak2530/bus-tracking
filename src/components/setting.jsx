@@ -59,7 +59,7 @@ function Setting(){
         if (re_pass !== re_passss) {
             alert("New passwords do not match.");
             return;
-          }
+        }
         try{
             
             const response = await axios.post("http://localhost:3001/reset", {
@@ -81,7 +81,7 @@ function Setting(){
                 alert("update failed");
             }
         }catch{
-            alert("error");
+            alert("hellooooo");
         }
     }
 

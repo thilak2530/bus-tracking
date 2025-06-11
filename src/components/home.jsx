@@ -13,14 +13,10 @@ import Sidebox from "./sidebox";
 
 function Home(){
 
-
-   
-
-
-
         const username = localStorage.getItem("username");
         const navigate = useNavigate();
         function goToLogin(){
+            localStorage.removeItem("username")
             navigate("/"); 
         };
 
@@ -43,7 +39,7 @@ function Home(){
 
         const [selectedNo, setSelectedNo] = useState("1");
         const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/busimg.png`);
-        function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img)}
+        function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img);}
         
         
        

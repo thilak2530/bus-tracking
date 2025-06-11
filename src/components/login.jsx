@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
+
+
+
 
 
 
@@ -34,8 +38,9 @@ function Login(){
             });
             
             if (response.data.success) {
-                localStorage.setItem("username", name1);
+                
                 navigate("/home");
+                localStorage.setItem("username", name1);
             } else{
                 
                 fname("");
