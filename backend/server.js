@@ -32,13 +32,15 @@ db.connect()
     app.use(bodyParser.urlencoded({ extended: true }));
 
 // Login Route
-app.post("/login", async (req, res) => {
+app.post("/student-login", async (req, res) => {
   const { username, password } = req.body;  
 
   try {
 
         const result = await db.query("SELECT * FROM busss WHERE username = $1 ",[username]);
-        if (result.rows.length > 0) {
+        if(result.rows.length===0){
+            return res.json({ success: false, msg: "Invalid username or password" });
+        }  
             const user=result.rows[0];
             const hashedpassword=user.password;
             if(hashedpassword.startsWith("$2")){
@@ -57,7 +59,41 @@ app.post("/login", async (req, res) => {
                     res.json({ success: false, msg: "Invalid username or password" });
                 }
             }
-        }
+        
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, msg: "Server error" });
+    }
+});
+
+app.post("/driver-login", async (req, res) => {
+  const { username, password } = req.body;  
+
+  try {
+
+        const result = await db.query("SELECT * FROM busdriver WHERE username = $1 ",[username]);
+        if(result.rows.length===0){
+            return res.json({ success: false, msg: "Invalid username or password" });
+        }    
+            const user=result.rows[0];
+            const hashedpassword=user.password;
+            if(hashedpassword.startsWith("$2")){
+                const match= await bcrypt.compare(password,hashedpassword);
+                if(match){
+                    res.json({ success: true });
+                }else{
+                    res.json({ success: false, msg: "Invalid username or password" });
+                }
+            }else{ 
+                if(password === hashedpassword){
+                    const newhash=await bcrypt.hash(password,saltRound);
+                    await db.query("update busdriver set password=$1 where username=$2",[newhash,username]);
+                    return res.json({success:true})
+                }else{
+                    res.json({ success: false, msg: "Invalid username or password" });
+                }
+            }
+        
     } catch (err) {
       console.error(err);
       res.status(500).json({ success: false, msg: "Server error" });
@@ -77,7 +113,7 @@ app.post("/reset", async (req,res) => {
         const match =await bcrypt.compare(password,user.password);
 
         if(!match){
-            res.json({save:false});
+            return res.json({save:false});
         }
         const newhashed = await bcrypt.hash(re_password,saltRound);
         await db.query(

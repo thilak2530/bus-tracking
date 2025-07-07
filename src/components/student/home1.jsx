@@ -45,9 +45,9 @@ export function Ourbus(props){
             <h4>NO {props.noo}</h4>
             <p>Arriving in{}</p>
             <div className="buttons">
-                <Link to="/home/bus-timings" state={{ abba: props.noo }} ><button onClick={bus_time}>Bus Timing</button></Link>
-                <button >Messages</button>
-                <button >Track Your Bus</button>
+                <Link to="/student-home/bus-timings" state={{ abba: props.noo }} ><button onClick={bus_time}>Bus Timing</button></Link>
+                <Link to="/messages"><button >Messages</button></Link>
+                <Link to="/tracking-bus"><button >Track Your Bus</button></Link>
             </div>
         </div>                  
     </div>  

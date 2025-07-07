@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Sidebox from "./sidebox";
 import { useLocation,useNavigate } from "react-router-dom";
-import { info, otherbusinfo,busTimings } from "./info";
+import { info, otherbusinfo,busTimings } from "../info";
+
 
 
 
@@ -16,14 +17,14 @@ function Bus_timing(){
 
       useEffect(() => {
         if (!abba) {
-            navigate("/home");
+            navigate("/student-home");
         }
     }, [abba, navigate]);
 
 
 
     function open() {
-        navigate("/home")
+        navigate("/student-home")
     }
 
         let busData;

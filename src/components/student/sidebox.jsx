@@ -1,6 +1,6 @@
 import React from "react";
 import { Home1 } from "./home1";
-import { info } from "./info";
+import { info } from "../info";
 
 
 
@@ -52,7 +52,7 @@ function Sidebox(){
                             names={info[0].listname}
                             img={info[0].img}
                             button={home}
-                            link={"/home"}
+                            link={"/student-home"}
                             
                         />
                         <Home1 
@@ -74,11 +74,10 @@ function Sidebox(){
                         />
                         <Home1 
                             names={info[5].listname}
-                            img={info[5].img}
+                            img={info[5].img}                         
+                            link={"/"}
                             
-                            op={"/"}
-                            
-                        />
+                        /> 
         </div>
     );
 }

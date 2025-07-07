@@ -31,7 +31,7 @@ function Setting(){
     
 
     function open() {
-            navigate("/home")
+            navigate("/student-home")
     }
     
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Home1, Otherbus ,Ourbus} from "./home1";
-import { info, otherbusinfo,busTimings } from "./info";
+import { info, otherbusinfo,busTimings } from "../info";
 import { useLocation, useNavigate } from "react-router-dom"; 
 import { Link } from "react-router-dom";
 import Setting from "./setting";
@@ -11,7 +11,8 @@ import Sidebox from "./sidebox";
 
 
 
-function Home(){
+
+function Homes(){
 
         const username = localStorage.getItem("username");
         const navigate = useNavigate();
@@ -120,4 +121,4 @@ function Home(){
     
 }
 
-export default Home;
+export default Homes;

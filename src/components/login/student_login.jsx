@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect ,useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
 
 
 
-
-
-
-
 function Login(){
+      
 
     const [name1,fname]=useState("");
     const [pass1,fpass]=useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [selectedRole, setSelectedRole] = useState("");
+    
 
 
     const handlechange = async(event)=>{
@@ -32,14 +31,14 @@ function Login(){
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:3001/login", {
+            const response = await axios.post("http://localhost:3001/student-login", {
                 username: name1,
                 password: pass1
             });
             
             if (response.data.success) {
                 
-                navigate("/home");
+                navigate("/student-home");
                 localStorage.setItem("username", name1);
             } else{
                 
@@ -51,9 +50,33 @@ function Login(){
             }
         } catch (error) {
             console.error("Login error:", error);
-            setError( <p id="blue">Server error. Please try again.</p>);
+            setError(<p id="blue">Server error. Please try again.</p>);
         }
     };
+
+    useEffect(() => {
+    const savedRole = localStorage.getItem("selectedRole");
+    if (savedRole) {
+      setSelectedRole(savedRole);
+    }
+  }, []);
+
+
+    function handleClick1(e){
+        
+        const role=e.target.value;
+        setSelectedRole(role);
+        localStorage.setItem("selectedRole", role); 
+        setTimeout(() => {
+            if (role === "driver") {
+                navigate("/driver-login");
+            } else {
+                navigate("/student-login");
+            }
+        }, 50);
+    }
+
+
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -67,11 +90,15 @@ function Login(){
                 <h3>KITSW</h3>
             
         
-                <div className="signBox">
+                <div className="signBox">   
                    <div className="signBox2">
                         <div>
                             <h4>Sign in to</h4>
                             <h5> Kits Bus tracking system</h5>
+                            <br/>
+                            <input className="check1" name="role" value="driver" type="radio" checked={selectedRole=== "driver"} onChange={handleClick1}/>driver<br/>
+                            <input className="check1" name="role" value="student" type="radio" checked={selectedRole=== "student"} onChange={handleClick1}/> student 
+                            <br/>
                         </div>
                         <form method="post" onSubmit={handleClick} >
                             <div className="box">
@@ -101,7 +128,8 @@ function Login(){
                                 <span>Forget password?</span>
                                 
                             </div>
-                            {error && <p style={{ color: "red" }}>{error}</p>}
+                            {error && <p id="blue">{error}</p>}
+                            
                             
                             <div className="box" id="box">
                                 <div className="inputbox">
