@@ -14,6 +14,8 @@ function Login(){
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [selectedRole, setSelectedRole] = useState("");
+
+  
     
 
 
@@ -39,6 +41,8 @@ function Login(){
             if (response.data.success) {
                 
                 navigate("/driver-home");
+                
+                localStorage.setItem("usernames", name1);
                 localStorage.setItem("username", name1);
             } else{
                 
@@ -96,7 +100,7 @@ function Login(){
                             <h4>Sign in to</h4>
                             <h5> Kits Bus tracking system</h5>
                             <br/>
-                            <input className="check1" name="role" value="driver" type="radio" checked={selectedRole=== "driver"} onChange={handleClick1}/>driver<br/>
+                            <input className="check1" name="role" value="driver" type="radio" checked={selectedRole=== "driver"} onChange={handleClick1} />driver<br/>
                             <input className="check1" name="role" value="student" type="radio" checked={selectedRole=== "student"} onChange={handleClick1}/> student 
                             <br/>
                         </div>

@@ -40,7 +40,7 @@ function Homes(){
 
         const [selectedNo, setSelectedNo] = useState("1");
         const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/busimg.png`);
-        function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img);}
+        function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img); localStorage.setItem("usernames",no)}
         
         
        

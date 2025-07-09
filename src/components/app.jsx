@@ -11,17 +11,25 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Messages from "./student/message";
 import Tracking from "./student/tracking";
+import Admin from "./admin.jsx/admin";
 
 
 function Clearusername(){
     const location = useLocation();
-    const a=localStorage.getItem("selectedRole")
+    
 
     useEffect(() => {
+    const role=localStorage.getItem("selectedRole");
+    if(!role){
+        localStorage.setItem("selectedRole", "driver"); 
+    }
+              
+    const a=localStorage.getItem("selectedRole")
+    localStorage.setItem("selectedRole", a); 
+
     if (location.pathname === "/" || location.pathname === "/driver-login" || location.pathname === "/student-login") {
       localStorage.removeItem("username");
-      const a=localStorage.getItem("selectedRole")
-      localStorage.setItem("selectedRole", a); 
+
     }
     }, [location]);
     return null;
@@ -29,21 +37,22 @@ function Clearusername(){
 
 function App(){
     
-    const a=localStorage.getItem("selectedRole");
+  
 
     return(
         <Router >
             <Clearusername />
             <Routes>
-                <Route path="/" element={<Navigate to={`/${a}-login`}/>} />
+                <Route path="/" element={<Navigate to={"/driver-login"}/>} />
                 <Route path="/driver-login" element={<Login_Driver />} />
                 <Route path="/student-login" element={<Login_Student />} />
+                <Route path="/admin" element={<Admin/>} />
                 <Route path="/driver-home" element={<PrivateRoute allowedRole="driver"><DriverHome /></PrivateRoute>}/> 
                 <Route path="/student-home" element={<PrivateRoute allowedRole="student"><StudentHome /></PrivateRoute>}/> 
                 <Route path="/setting" element={<PrivateRoute allowedRole="student"><Setting /></PrivateRoute>} />
                 <Route path="/messages" element={<PrivateRoute allowedRole="student"><Messages /></PrivateRoute>} />
                 <Route path="/tracking-bus" element={<PrivateRoute allowedRole="student"><Tracking /></PrivateRoute>} />
-                <Route path="/home/bus-timings" element={<PrivateRoute allowedRole="student"><Bus_timing /></PrivateRoute>} />
+                <Route path="/student-home/bus-timings" element={<PrivateRoute allowedRole="student"><Bus_timing /></PrivateRoute>} />
             </Routes>
         </Router>
     );  

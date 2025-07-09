@@ -40,6 +40,7 @@ function Login(){
                 
                 navigate("/student-home");
                 localStorage.setItem("username", name1);
+                localStorage.setItem("usernames", "1");
             } else{
                 
                 fname("");

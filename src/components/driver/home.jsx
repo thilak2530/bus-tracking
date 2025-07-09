@@ -1,42 +1,41 @@
-import React from "react";
-
+import React, { useState } from "react";
 import AA from "./aa";
+import { busTimings } from "../info";
 
+function Home() {
+  const aaa = localStorage.getItem("usernames");
+  const [clearTrigger, setClearTrigger] = useState(0); 
 
-function Home(){
-    const aaa=localStorage.getItem("username");
+  async function handleCompleteTrip() {
+    const busNo = parseInt(localStorage.getItem("usernames"));
 
-    
-    return(
-        <div className="driver-main">   
-            <div className="driver-main1">
-                
+    await fetch("http://localhost:3001/driver/complete-trip", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ busNo })
+    });
 
-                <p>BUS NO {aaa}</p>
-                <div className="bus-places">
-                    <AA stopKey="a" />
-                    <AA stopKey="b" />
-                    <AA stopKey="c" />     
-                    <AA stopKey="d" /> 
-                    <AA stopKey="e" />            
-                    <AA stopKey="f" /> 
-                    <AA stopKey="g" /> 
-                    <AA stopKey="h" /> 
-                    <AA stopKey="i" /> 
-                    <AA stopKey="j" /> 
-                    <AA stopKey="k" /> 
-                    <AA stopKey="j" /> 
-                    <AA stopKey="k" /> 
-                    <AA stopKey="j" /> 
-                    <AA stopKey="k" />   <AA stopKey="j" /> 
-                
-                
-                </div>
-                <input id="submit" type="button" value="Trip Completed" />
+    alert("Trip data cleared from DB!");
+    setClearTrigger(prev => prev + 1); 
+  }
 
-            </div>  
-        </div>   
-    );
+  const stopKeys = Object.keys(busTimings.find(b => b.bus === parseInt(aaa)) || {}).filter(k => k !== "bus");
+
+  return (
+    <div className="driver-main">
+      <div className="driver-main1">
+        <p>BUS NO {aaa}</p>
+        <div className="bus-places">
+          {stopKeys.map((key) => (
+            <AA key={key} stopKey={key} clearTrigger={clearTrigger} />
+          ))}
+        </div>
+        <input id="submit" type="button" onClick={handleCompleteTrip} value="Trip Completed" />
+      </div>
+    </div>
+  );
 }
 
 export default Home;
