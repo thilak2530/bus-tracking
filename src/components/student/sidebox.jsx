@@ -75,7 +75,7 @@ function Sidebox(){
                         <Home1 
                             names={info[5].listname}
                             img={info[5].img}                         
-                            link={"/"}
+                            link={"/student-login"}
                             
                         /> 
         </div>

@@ -9,6 +9,7 @@ function StudentHome() {
 
   useEffect(() => {
     if (!busNo) return; // if bus number not selected, skip everything
+    
 
     // 1. Fetch stored updates when student logs in
     fetch(`http://localhost:3001/student/get-updates/${busNo}`)

@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import Sidebox from "./sidebox";
 import { useLocation,useNavigate } from "react-router-dom";
-import { info, otherbusinfo,busTimings } from "../info";
+import { info, otherbusinfo,useBusTimings } from "../info";
 
 
 
 
 
 function Bus_timing(){
+    const busTimings=useBusTimings();
     const location = useLocation();
     const navigate = useNavigate();
     const abba = location.state?.abba;
@@ -61,7 +62,8 @@ function Bus_timing(){
             <Sidebox />
             <div className="timings-main">
             <div className="tink" onClick={open}>
-                <img src={`${process.env.PUBLIC_URL}/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
+                <img src={`${process.env.PUBLIC_URL}/homeimg/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
+                
             </div> 
             <div className="timings">
                 <table>

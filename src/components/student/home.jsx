@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Home1, Otherbus ,Ourbus} from "./home1";
-import { info, otherbusinfo,busTimings } from "../info";
+import { info, otherbusinfo } from "../info";
 import { useLocation, useNavigate } from "react-router-dom"; 
 import { Link } from "react-router-dom";
 import Setting from "./setting";
@@ -39,13 +39,26 @@ function Homes(){
 
 
         const [selectedNo, setSelectedNo] = useState("1");
-        const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/busimg.png`);
-        function handleBusClick(no,img) {setSelectedNo(no);setSelectedImg(img); localStorage.setItem("usernames",no)}
+        const [selectedImg, setSelectedImg] = useState(`${process.env.PUBLIC_URL}/homeimg/bus5.png`);
+        useEffect(()=>{
+            const aaa=localStorage.getItem("usernames");
+            if(aaa){
+                setSelectedNo(aaa);
+            }
+        })
+        
+        
+     
+        function handleBusClick(no,img){
+            setSelectedNo(no);setSelectedImg(img); 
+            localStorage.setItem("usernames",no)  
+           
+            
+        }
         
         
        
         
-
     
     return <div className="homepage">
         
@@ -68,40 +81,16 @@ function Homes(){
                         <h2>Other buses</h2>
                         <div className="mainbox2">
 
-                            
-
-                            <Otherbus   
-                                img={otherbusinfo[0].img}
-                                no={otherbusinfo[0].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[0].no,otherbusinfo[0].img)}}
-                            />
-                            <Otherbus 
-                                img={otherbusinfo[1].img}
-                                no={otherbusinfo[1].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[1].no,otherbusinfo[1].img)}}
-                            />
-                            <Otherbus 
-                                img={otherbusinfo[2].img}
-                                no={otherbusinfo[2].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[2].no,otherbusinfo[2].img)}}
-                            />
-                            <Otherbus 
-                                img={otherbusinfo[3].img}
-                                no={otherbusinfo[3].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[3].no,otherbusinfo[3].img)}}
-                            />
-                            <Otherbus 
-                                img={otherbusinfo[4].img}
-                                no={otherbusinfo[4].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[4].no,otherbusinfo[4].img)}}
-                            />
-                            <Otherbus 
-                                img={otherbusinfo[5].img}
-                                no={otherbusinfo[5].no}  
-                                onClick={()=>{handleBusClick(otherbusinfo[5].no,otherbusinfo[5].img)}}
-                            />
-                            
-                            
+                            {otherbusinfo.map((bus, index) => (
+                                <Otherbus
+                                    key={index}
+                                    img={bus.img}
+                                    no={bus.no}
+                                    onClick={() => handleBusClick(bus.no, bus.img)}
+                                />
+                                ))
+                            }
+                                                      
                         </div>     
                     </div>                       
                 </div>

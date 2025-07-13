@@ -1,0 +1,154 @@
+.driver-main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../pexels-nicosiegl01-19524286.jpg");
+    background-color: rgb(38, 218, 228);
+    background-position: center; 
+    background-size: cover;
+    
+}
+
+
+.driver-main1{
+    background-color: rgba(219, 212, 212, 0.6);
+    width: 70%;
+    height: 75vh;
+    box-shadow: 10px 10px 10px 1px rgba(146, 138, 122, 0.3);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.driver-main1 p{
+    margin-top: 10px;
+    margin-left: 40%;
+    font-size: 35px;
+    color: black;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.driver-aaa{
+    margin-left: 30%;
+    margin-top: 5%;
+    border-radius: 25px;
+    height: 30vh;
+    width: 40%;
+
+}
+.driver-aaa img{
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+}
+.bus-places{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left:2% ;
+    padding-right:2% ;
+    padding-top: 25px;
+    border-radius: 25px;
+    width: 76%;
+    height: 500px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 3%;
+    column-gap: 3%;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    scrollbar-width: none;
+}   
+.bus-places div{
+   background-color: rgba(255, 255, 255, 0.8);
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    border-radius: 20px;
+  
+    
+}
+.bus-places div p{
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.driver-main1 #submit{
+    border-radius:10px ;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-bottom: 10px;
+    width: 40%;
+    height: 50px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+@media(max-width:440px){
+    .driver-main{
+    height: 100vh;
+    background-image: url("../pexels-nicosiegl01-19524286.jpg");
+    /* background-color: rgb(38, 218, 228); */
+    background-position: center; 
+    background-size: cover;
+    
+    
+}
+    .driver-main1{
+    background-color: rgba(219, 212, 212, 0.6);
+    width: 100%;
+    height: 100vh;
+    box-shadow: 10px 10px 10px 1px rgba(146, 138, 122, 0.3);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+  
+}   
+.driver-main1 p{
+    width: 48%;
+    margin-top: 10px;
+    margin-left: 29.5%;
+    margin-right: 29.5%;
+    font-size: 35px;
+    color: black;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.bus-places{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left:2% ;
+    padding-right:2% ;
+    padding-top: 25px;
+    border-radius: 25px;
+    width: 76%;
+    height: 600px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 3%;
+    column-gap: 3%;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    scrollbar-width: none;
+}  
+.driver-main1 #submit{
+    border-radius:10px ;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+    margin-left: 30%;
+    width: 40%;
+    height: 50px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+}

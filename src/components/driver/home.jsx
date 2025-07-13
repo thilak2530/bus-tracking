@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import AA from "./aa";
-import { busTimings } from "../info";
+import { useBusTimings} from "../info";
+
+
 
 function Home() {
+  const busTimings=useBusTimings();
   const aaa = localStorage.getItem("usernames");
   const [clearTrigger, setClearTrigger] = useState(0); 
 
@@ -18,7 +21,8 @@ function Home() {
     });
 
     alert("Trip data cleared from DB!");
-    setClearTrigger(prev => prev + 1); 
+    setClearTrigger(prev => prev + 1);
+      localStorage.setItem(`checkedStops_${busNo}`, JSON.stringify([])); 
   }
 
   const stopKeys = Object.keys(busTimings.find(b => b.bus === parseInt(aaa)) || {}).filter(k => k !== "bus");

@@ -88,7 +88,7 @@ function Login(){
         <div className="container">
             <div className="login" >
             
-                <h3>KITSW</h3>
+                <h3 className="h3">KITSW</h3>
             
         
                 <div className="signBox">   
@@ -126,7 +126,7 @@ function Login(){
                                 <div>  
                                     <input type="checkbox" /><span>Remember me</span>   
                                 </div>
-                                <span>Forget password?</span>
+                                <a href="#"><span>Forget password?</span></a>
                                 
                             </div>
                             {error && <p id="blue">{error}</p>}

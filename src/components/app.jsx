@@ -11,7 +11,10 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Messages from "./student/message";
 import Tracking from "./student/tracking";
-import Admin from "./admin.jsx/admin";
+import Admin from "./admin.jsx/admin-home";
+import Admin_login from "./login/admin_login";
+import Admin_home_main from "./admin.jsx/admin-home-main";
+import Bus_changes from "./admin.jsx/bus-changes";
 
 
 function Clearusername(){
@@ -29,6 +32,7 @@ function Clearusername(){
 
     if (location.pathname === "/" || location.pathname === "/driver-login" || location.pathname === "/student-login") {
       localStorage.removeItem("username");
+      localStorage.removeItem("usernames");
 
     }
     }, [location]);
@@ -46,7 +50,10 @@ function App(){
                 <Route path="/" element={<Navigate to={"/driver-login"}/>} />
                 <Route path="/driver-login" element={<Login_Driver />} />
                 <Route path="/student-login" element={<Login_Student />} />
-                <Route path="/admin" element={<Admin/>} />
+                <Route path="/admin-login" element={<Admin_login />} />
+                <Route path="/password-change" element={<Admin/>} />
+                <Route path="/bus-changes" element={<Bus_changes/>} />
+                <Route path="/admin-home-main" element={<Admin_home_main/>} />
                 <Route path="/driver-home" element={<PrivateRoute allowedRole="driver"><DriverHome /></PrivateRoute>}/> 
                 <Route path="/student-home" element={<PrivateRoute allowedRole="student"><StudentHome /></PrivateRoute>}/> 
                 <Route path="/setting" element={<PrivateRoute allowedRole="student"><Setting /></PrivateRoute>} />

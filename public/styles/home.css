@@ -1,0 +1,400 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    
+}
+html{
+    background-color:rgb(248, 236, 216);
+    
+}
+
+.homepage{
+    width: 100%;
+    height: 100vh;
+    background-color:rgb(248, 236, 216);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.insidebox{
+    width: 90%;
+    height:85%;  
+    margin: 50px;
+    box-shadow: 10px 10px 10px 1px rgba(172, 118, 11, 0.3);
+    border-radius: 25px;
+    background-color: rgb(184, 179, 157);
+    display: flex;
+}
+.sidebox{
+    height: 85vh;
+    width: 25%;
+    border-radius:25px 0px 0px 25px; 
+     /* background: linear-gradient(to left, #cba87bcd, #a99e82); */
+     /* background: linear-gradient(to left,#b7ab8f,  #c0b390); */
+     background: linear-gradient(to left,#bbb5a8,  #c0b390);
+     /* background: linear-gradient(to left,#b2ac9f,  #c0b390); */
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.userinfo{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.userinfo img{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.userinfo h2{
+    width: 100%;
+    word-wrap: break-word;
+    font-size: 20px;
+}
+.sideboxlist{
+    width: 100px;
+    display: flex;
+    padding: 5%;
+    margin-bottom: 5px;
+    border-radius: 10px;    
+}
+.sideboxlist:hover{
+    background-color: rgb(219, 222, 178);
+}
+.sideboxlist a{
+    text-decoration: none;
+}
+.sideboxlist img{
+    padding-right: 13px;
+}
+.sideboxlist p{
+    padding-top: 4px;
+    color: black;   
+}
+.mainbox1 h1{
+    margin-top:30px ;
+    margin-bottom: 20px;
+}
+.rightside{
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+    overflow-y: auto;
+    overflow-x: hidden;  
+    scrollbar-width: none; 
+    
+}
+.mainbox{   
+    height:85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    overflow-y: auto;
+    overflow-x: hidden; 
+    scrollbar-width: none;
+     /* background: linear-gradient(to right, #cba87bcd, #a99e82); */
+     /* background: linear-gradient(to right,#b7ab8f,  #c0b390);   */
+     background: linear-gradient(to right,#b2ac9f,  #c0b390);
+     border-top-right-radius: 25px; 
+     border-bottom-right-radius: 25px; 
+     
+}
+.aaa{
+    
+    margin-bottom: 30px;  
+}
+
+.bbb{
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.ourbus{
+    width: 40rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(221, 220, 220, 0.6);
+    /* background: linear-gradient(to right,#c3b493,  #a99e82); */
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 10px 10px 10px 1px rgba(140, 120, 77, 0.8);
+    
+}
+.busimg{
+    width: 34rem;
+    height: 20rem;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.businfo{
+    width: 34rem;
+}
+.businfo .buttons{
+    margin-top: 9px;
+    width: 34rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.businfo  p{
+    font-size: 24px;
+    font-weight: 100;
+    color: black;
+    margin: 4px 0px ;
+}
+.buttons button{
+    width: 11rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to right,#b2ac9f,  #c0b390);
+}
+
+
+.otherbus{ 
+    width: 13rem;
+    height: 13rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border-radius: 10px;
+   
+    color:black;
+    margin-top: 13px
+}
+.otherbus img{
+    margin-top: 12px ;
+    margin-bottom: 3px;
+    width: 12rem;
+    height: 10rem;
+    border-radius: 10px;
+}
+
+
+.mainbox2{
+    height: 14rem;
+    width: 75%;
+    margin-left: 12.5%; 
+    margin-right: 12.5%;
+    /* background-color: black; */
+    background-color: rgba(221, 220, 220, 0.6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 13px;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.aaa h1{
+    font-size:40px;
+    font-weight: 600;
+    margin-top: 20px;
+    
+}
+.bbb h4,.aaa h4{
+    font-size:18px ;
+    
+}
+.aaa h2{
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.bbb h2{
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 500;
+    width: 75%;
+    margin-left: 12.5%;
+}
+.tink{
+    display: none;
+    width: 100%;
+    height: 5vh;
+    
+}
+@media(max-width:440px){
+    .homepage{
+        width: 100%;
+        height: 100vh;
+        background-color:rgb(248, 236, 216);;
+           
+    }
+    .insidebox{
+        width: 100%;
+        height:100vh;  
+        background-color: rgb(184, 179, 157);
+        display: flex;
+        border-radius: 0px;
+        margin: 0px;  
+    }
+    .sidebox{
+        height: 100vh;
+        width: 100%;
+        border-radius:0px;
+        background-color: rgb(208, 157, 18);
+        text-align: center;
+        display:none ;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+    .rightside{
+        height: 100vh;
+        width: 100%;
+        display: block;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center; 
+        overflow-y: auto;
+        overflow-x: hidden;  
+        scrollbar-width: none;
+    }
+    .mainbox{   
+        height:95vh;
+        width: 100%; 
+        border-radius: 0px;
+           
+    }
+
+    .aaa h1{
+        font-size:30px;
+        font-weight: 600;
+        margin-top: 20px;
+        
+    }
+    .bbb h4{
+        font-size:18px ;
+        
+    }
+    .aaa h2{
+        margin-bottom: 10px;
+        font-size: 32px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .bbb h2{
+        margin-bottom: 10px;
+        font-size: 32px;
+        font-weight: 500;
+        width: 75%;
+        margin-left: 5%;
+    }
+    .ourbus{
+        width: 22rem;
+        height: 24rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(221, 220, 220, 0.6);
+        border-radius: 10px;
+        margin-top: 15px;
+        box-shadow: 10px 10px 10px 1px rgba(177, 163, 133, 0.2);
+    }
+    .busimg{
+        width: 19rem;
+        height: 19rem;
+        border-radius: 10px;
+        margin-top: 14px;
+        margin-bottom: 10px;
+    }
+    .businfo{
+        width: 19rem;
+    }
+    .businfo  p{
+        font-size: 15px;
+        font-weight: 100;
+        color: rgb(153, 165, 176);
+        margin: 4px 0px ;
+    }
+    .businfo .buttons{
+        margin-top: 9px;
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .buttons button{
+        width: 5.5rem;
+        height: 40px;
+        border-radius: 6px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+    .mainbox2{
+        height: 26rem;
+        width: 90%;   
+        background-color: rgba(221, 220, 220, 0.6);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding-bottom: 13px;
+        border-radius: 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-left: 5%;
+        margin-bottom: 10px;
+        scrollbar-width: none;
+    }
+    .otherbus{ 
+        width: 100%;
+        height: 13rem;
+        display: flex;
+        flex-direction:column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        border-radius: 10px;
+        background-color: rgba(221, 220, 220,);
+        color: black;
+        margin-top: 2px
+    }
+    .otherbus img{
+        margin-top: 12px ;
+        margin-bottom: 3px;
+        width: 13rem;
+        height: 10rem;
+        border-radius: 10px;
+    }
+    .sideboxmain{
+        width: 100%;
+        display: flex;
+        justify-content:center ;
+        align-items: centre;
+    }
+    .tink{
+        display: flex;
+        width: 100px;
+        height: 3vh;
+        margin:6%; 
+        margin-top: 40px;   
+    }
+    .tink img{
+        width: 35px;
+        height: 30px;
+    }
+
+}

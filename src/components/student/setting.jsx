@@ -75,7 +75,7 @@ function Setting(){
                 re_pass_final("");
                 re_passss_final("");
                 old_pass_final("")
-                navigate("/");
+                navigate("/student-login");
             }
             else{
                 alert("update failed");
@@ -92,7 +92,8 @@ function Setting(){
 
         <div className="sett-main">
             <div className="tink" onClick={open}>
-                    <img src={`${process.env.PUBLIC_URL}/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
+                    <img src={`${process.env.PUBLIC_URL}/homeimg/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 
+                    
             </div> 
             <div className="sett">
                 <p id="reset-heading"> Reset your Username & password</p>
@@ -107,18 +108,18 @@ function Setting(){
                                 </div>
                             </div>
                             <p>old password :</p>
-                            <div className="abc">
+                            <div className="abc" style={{borderColor:"black"}}>
                                 <input className="input" type={showPassword?"text":"password"} onChange={old_pass_1} name="reset-password" value={old_pass} required/>
                                 <div  id={showPassword ? "div1" : "div2"} onClick={togglePasswordVisibility}></div>
                             </div>
                             <p> new password :</p>
-                            <div className="abc">
+                            <div className="abc" style={{borderColor:"black"}}>
                                 <input className="input" type={showPasswor?"text":"password"} onChange={re_pass_1} name="reset-password" value={re_pass} required/>
                                 <div id={showPasswor ? "div3" : "div4"} onClick={togglePasswordVisibilit}></div>
                             </div>
                             
                             <p>confirm password :</p>
-                            <div className="abc">
+                            <div className="abc" style={{borderColor:"black"}}>
                                 <input className="input" type={showPasswo?"text":"password"} onChange={re_passss_1} name="reset-password-1" value={re_passss} required/>
                                 <div id={showPasswo ? "div5" : "div6"} onClick={togglePasswordVisibili}></div>
                             </div>

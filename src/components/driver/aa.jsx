@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { busTimings } from "../info";
+import { useBusTimings} from "../info";
+
+
 
 function AA({ stopKey, clearTrigger }) {
+  const busTimings=useBusTimings();
   const busNo = parseInt(localStorage.getItem("usernames"));
   const busIndex = busTimings.findIndex((b) => b.bus === busNo);
   if (busIndex === -1) return null;
 
   const stop = busTimings[busIndex][stopKey];
   if (!stop) return null;
+  const stopName = stop[0];
+  const storageKey = `checkedStops_${busNo}`;
 
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false); 
 
   useEffect(() => {
-    
-    setIsChecked(false);
-  }, [clearTrigger]);
+    const saved = JSON.parse(localStorage.getItem(storageKey)) || [];
+    setIsChecked(saved.includes(stopName));
+  }, [stopName, storageKey, clearTrigger]);
+
 
   async function handleClick() {
-    const stopName = stop[0];
     const time = new Date().toLocaleTimeString();
     setIsChecked(true);
 
@@ -34,7 +39,11 @@ function AA({ stopKey, clearTrigger }) {
         }),
       });
 
-      
+      const prev = JSON.parse(localStorage.getItem(storageKey)) || [];
+      const updated = [...new Set([...prev, stopName])];
+      localStorage.setItem(storageKey, JSON.stringify(updated));
+
+      setIsChecked(true);
       console.log(`Sent stop update: ${stopName}`);
     } catch (error) {
       console.error("Failed to send update", error);
@@ -57,8 +66,7 @@ function AA({ stopKey, clearTrigger }) {
           justifyContent: "center",
           marginRight: "10px",
           marginTop: "10px",
-          cursor: "pointer",
-         
+          cursor: "pointer",    
           WebkitTapHighlightColor: "transparent",
         }}
       >

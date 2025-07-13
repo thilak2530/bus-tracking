@@ -1,0 +1,110 @@
+.bus-timing-page{
+    width: 90%;
+    display: flex;
+    margin: 7.5vh 5% 7.5vh 5%;
+    border-radius: 25px;   
+    box-shadow: 10px 10px 10px 1px rgba(172, 118, 11, 0.3);
+    /* background-color: rgb(184, 179, 157); */
+    background: linear-gradient(to right,#c0bcb5,  #c0b390);
+    
+}
+.bus-timings{
+    height: 85vh;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+     
+}
+.timings-main{
+    height: 5vh;
+    width: 100%; 
+}
+.timings{
+    margin-top: 13.5vh;
+    margin-bottom: 13.5vh;
+    margin-left: 17.25%;
+    margin-right: 17.25%;
+    height:58vh;
+    width: 65%;
+    background-color: rgb(184, 179, 157);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+table{
+   
+    width: 100%;
+    border-collapse: collapse; 
+    text-align: center;
+    border-radius: 20px;
+}
+th:nth-child(1){
+    width: 50%;
+}
+th:nth-child(2){
+    width: 25%;
+}
+th:nth-child(3){
+    width: 25%;
+}
+
+table,tr,td,th{
+    border: 2px solid black;
+    height: 50px;
+    min-height: 30px;
+    max-height: 50px;
+   
+    
+}
+.ooo{
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+}
+@media(max-width:440px){
+    .bus-timing-page{
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    border-radius: 0px;
+    
+}
+    .bus-timings{
+        height: 100vh;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+    }
+    .timings-main{
+        height:100vh;
+        width: 100%;  
+        
+
+    }
+
+    .timings-main .tink{
+        padding-top: 20px;
+    }
+    .timings{
+        margin-top: 8.5vh;
+        margin-bottom: 13.5vh;
+        margin-left: 12%;
+        margin-right: 12%;
+        height:65vh;
+        width: 76%;
+        background-color: rgb(184, 179, 157);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+    }
+}
