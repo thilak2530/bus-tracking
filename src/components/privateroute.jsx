@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-
-
-
-
-const PrivateRoute = ({ children }) => {
+export const PrivateRoute = ({ children, allowedRole }) => {
   const isAuthenticated = localStorage.getItem("username");
-  return isAuthenticated ? children : <Navigate to="/login" />;
-};
+  const role = localStorage.getItem("selectedRole");
 
-export default PrivateRoute;
+  if (!isAuthenticated || role !== allowedRole) {
+    return <Navigate to={"/"} />;
+  }
+
+  return children;
+};

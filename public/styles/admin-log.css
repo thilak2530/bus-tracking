@@ -1,0 +1,279 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", sans-serif;
+}
+.h1-adm{
+ margin-top: 6%;
+ text-decoration: underline;
+ font-size: 25px;
+}
+.login{
+    height: 100vh;  
+    display: flex;  
+    justify-content: center;
+    align-items: center; 
+    
+}
+.container1{ 
+    background: linear-gradient(to right, #a9d1dd, #97aec1, #9cbcd7);
+    width: 100%;
+    height: auto;
+    display: block;
+    
+
+}
+
+
+ #h3{
+    font-size: 32px;
+    font-weight: 800;
+    color: black;
+    background: linear-gradient(to right, #a9d1dd, #97aec1, #9cbcd7);
+    width: 135px;
+    border-radius: 7px;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    top: 3%;
+    left: 52px;
+    padding-left: 15px;
+}
+.signBoxx{
+    display: flex;
+    flex-direction: column;
+    justify-content:normal;
+    align-items: center; 
+    width: 80%;
+    max-width: 644px;
+    min-width: 300px;
+    height: 661px;
+   background-color: rgba(255, 255, 255, 0.5);
+   border-radius: 10px;
+   border: 0.5 solid #878787;
+   opacity:1;
+   z-index: 2;
+   box-shadow: 6px 6px 6px 1px rgba(86, 81, 71, 0.3);
+}
+.signBox22{
+    width: 80%;
+    max-width: 539px;
+    margin-top: 8%;
+    
+}
+
+.signBoxx p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    color: black;
+    font-family: "Poppins", sans-serif;
+   
+}
+.signBoxx h4{
+    font-size: 31px;
+    font-weight: 500;
+    line-height: 100%;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    
+}
+.signBoxx h5{
+    line-height: 100%;
+    color: black;
+    padding-top: 13px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;  
+}
+.box{
+    margin-top: 20px;
+}
+.box input{
+    padding-left: 15px;
+    height: 57px;  
+    margin-top: 10px;
+    border: 0.6px solid #282828;
+    border-radius: 6px; 
+    width: 100%; 
+    
+    
+}
+.inputbox #user{
+    width: 100%;
+}
+
+
+.inputbox #button {
+    background-color:black;
+    color: white; 
+    width: 520px;
+    min-width: 241.2px;
+    max-width: 540px;
+    border: none;
+    height: 45px;
+    padding-left: 0px;
+    cursor: pointer;
+    
+}
+.check{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span{
+    padding-left: 7px;
+    font-size: 12px;
+    font-weight:300;
+    font-family: "Poppins", sans-serif;
+}
+input::placeholder{
+    font-size: 14px;
+    font-weight: 200;
+    font-family: "Poppins", sans-serif;
+}
+.inputbox{
+    width: 100%;
+    min-width: 241px;
+    max-width: 519px;
+    display: flex;
+    align-items: center;
+    border: 0.6px solid #282828 ;
+    border-radius: 6px;  
+    margin-top: 10px;
+    background-color: rgb(255,255,255,0.3);
+    
+   
+}
+.abc{
+    min-width: 241px;
+    max-width: 519px;
+    display: flex;
+    align-items: center;
+    border: 0.6px solid red ;
+    border-radius: 6px;  
+    margin-top: 10px;
+}
+
+
+
+.inputbox input,.abc input{
+    width: 90%;
+    border: none;
+    outline: none;
+    margin-top: 0px;
+    background-color: rgb(255,255,255,0.1);
+    
+}
+
+.inputbox #div1,.abc #div1 {
+    display: flex;
+    margin: 18px 30px 10px 30px;
+    width: 24px;
+    height: 24px; 
+    background-size:100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url("../open.svg");
+    -webkit-tap-highlight-color: transparent;
+    background-color: white;
+    
+}
+.inputbox #div2,.abc #div2 {
+    display: flex;
+    margin: 18px 30px 10px 30px;
+    width: 24px;
+    height: 24px; 
+    background-size:100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url("../close.svg");
+     -webkit-tap-highlight-color: transparent;
+     
+}
+#blue{
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+}
+
+
+
+
+
+
+@media(max-width:440px){
+    .h1-adm{
+        margin-top: 6%;
+        text-decoration: underline;
+        font-size: 20px;
+    }   
+
+    .container1{
+        background-position: center; 
+        background-size: cover;
+        width: 100%;
+        height: auto;
+        display: block;
+        z-index: 1;
+    }
+
+    #h3{
+        font-size: 32px;
+        font-weight: 800;
+        color: black;
+        background: linear-gradient(to right, #a9d1dd, #97aec1, #9cbcd7);
+        width: 135px;
+        border-radius: 7px;
+        font-family: "Poppins", sans-serif;
+        position: absolute;
+        top: 45px;
+        left: 33%;
+        padding-left: 15px;
+    }
+    .signBoxx h5{
+        line-height: 100%;
+        color: black;
+        padding-top: 13px;
+        font-size: 12px;
+        font-weight: 300;
+        font-family: "Poppins", sans-serif;  
+    }
+    .box{
+        margin-top: 15px;
+    }
+    .signBoxx{
+        width: 80%;
+        max-width: 644px;
+        min-width: 300px;
+        height: 500px;
+        background-color: rgba(255, 255, 255, 0.5);
+       border-radius: 10px;
+       border: 0.5 solid #878787;
+       display: flex;
+       justify-content: normal;
+       align-items: center;
+       margin-top: 10%;
+    }
+    .inputbox #button {
+        background-color:black;
+        color: white; 
+        width: 520px;
+        min-width: 241.2px;
+        max-width: 540px;
+        border: none;
+        height: 45px;
+        padding-left: 0px;
+        cursor: pointer;
+        
+        
+    }
+    .signBox22{
+    width: 80%;
+    max-width: 539px;
+     margin-top: 8%;
+    
+}
+}
