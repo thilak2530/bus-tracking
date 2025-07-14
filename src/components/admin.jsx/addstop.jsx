@@ -61,11 +61,11 @@ function AddStop(){
 
     return(
         <div>
-            <input type="number" onChange={handlechange}/>
-            <input type="text" onChange={handlechang}/>
-            <input type="text" onChange={handlechan}/>
-            <input type="text" onChange={handlecha}/>
-            <input type="text" onChange={handlech}/>
+            <input type="number" onChange={handlechange} placeholder="bus-no"/>
+            <input type="text" onChange={handlechang} placeholder="alphabet"/>
+            <input type="text" onChange={handlechan}placeholder="stop-name"/>
+            <input type="text" onChange={handlecha}placeholder="stop-arrive-time"/>
+            <input type="text" onChange={handlech}placeholder="stop-depart-time"/>
             <input type="submit" onClick={handleclick}/> 
         </div>
     );
