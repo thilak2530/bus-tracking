@@ -82,8 +82,9 @@ app.post("/student-login", async (req, res) => {
             const hashedpassword=user.password;
             if(hashedpassword.startsWith("$2")){
                 const match= await bcrypt.compare(password,hashedpassword);
+                const privatecheck=await db.query("SELECT rollno from busss WHERE password=$1",[hashedpassword])
                 if(match){
-                    res.json({ success: true });
+                    res.json({ success: true ,privatecheck:privatecheck.rows});
                 }else{
                     res.json({ success: false, msg: "Invalid username or password" });
                 }
@@ -91,7 +92,8 @@ app.post("/student-login", async (req, res) => {
                 if(password === hashedpassword){
                     const newhash=await bcrypt.hash(password,saltRound);
                     await db.query("update busss set password=$1 where username=$2",[newhash,username]);
-                    return res.json({success:true})
+                    const privatecheck=await db.query("SELECT rollno from busss WHERE password=$1",[newhash])
+                    return res.json({success:true,privatecheck:privatecheck.rows})
                 }else{
                     res.json({ success: false, msg: "Invalid username or password" });
                 }
@@ -116,8 +118,9 @@ app.post("/driver-login", async (req, res) => {
             const hashedpassword=user.password;
             if(hashedpassword.startsWith("$2")){
                 const match= await bcrypt.compare(password,hashedpassword);
+                const privatecheck=await db.query("SELECT busno from busdriver WHERE password=$1",[hashedpassword])
                 if(match){
-                    res.json({ success: true });
+                    res.json({ success: true,privatecheck:privatecheck.rows });
                 }else{
                     res.json({ success: false, msg: "Invalid username or password" });
                 }
@@ -125,7 +128,8 @@ app.post("/driver-login", async (req, res) => {
                 if(password === hashedpassword){
                     const newhash=await bcrypt.hash(password,saltRound);
                     await db.query("update busdriver set password=$1 where username=$2",[newhash,username]);
-                    return res.json({success:true})
+                    const privatecheck=await db.query("SELECT busno from busdriver WHERE password=$1",[newhash])
+                    return res.json({success:true,privatecheck:privatecheck.rows})
                 }else{
                     res.json({ success: false, msg: "Invalid username or password" });
                 }
@@ -203,7 +207,7 @@ app.post("/driver/send-data", async (req, res) => {
 
   try {
     console.log(`Received update: Bus ${busNo}, Stop: ${stop}, Time: ${time}`);
-     io.emit("bus-data", { busNo, stop, time });
+    io.emit("bus-data", { busNo, stop, time });
     res.json({ success: true });
   } catch (error) {
     console.error("Error saving stop update:", error);
@@ -290,7 +294,44 @@ app.post("/add-bus-stops",async(req,res)=>{
 })
 
 
+app.post("/private-remove",async(req,res)=>{
+  const{rollno}=req.body;
+  try{
+      const roll=await db.query("DELETE FROM private WHERE rollno = $1",[rollno]);
+      res.json({success:true});
+  }
+  catch(error){
+    console.error("Error fetching rollno:", error);
+  }
+})
+app.post("/private",async(req,res)=>{
+  const{rollno,username}=req.body;
+  try{
+      await db.query("INSERT INTO private (name,rollno) VALUES ($1,$2)",[username,rollno]);
+      
+      res.json({success:true});
+  }
+  catch(error){
+    console.error("Error fetching rollno:", error);
+     res.status(500).json({ success: false, error: "Failed to insert data" });
+  }
+})
+
+app.get("/private/:rollno",async(req,res)=>{
+  const{rollno}=req.params;
+  try{  
+      const roll =await db.query("SELECT rollno FROM private WHERE rollno=($1)",[rollno]);
+      res.json({success:true,roll});
+  }
+  catch(error){
+    console.error("Error fetching rollno:", error);
+     res.status(500).json({ success: false, error: "Failed to insert data" });
+  }
+})
+
+
 
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+

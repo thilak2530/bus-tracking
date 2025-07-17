@@ -7,7 +7,7 @@ function AA({ stopKey, clearTrigger }) {
   const [isChecked, setIsChecked] = useState(false); 
 
   const busTimings=useBusTimings();
-  const busNo = parseInt(localStorage.getItem("usernames"));
+  const busNo = parseInt(localStorage.getItem("busno"));
   const busIndex = busTimings.findIndex((b) => b.bus === busNo);
   
   let stop = null;

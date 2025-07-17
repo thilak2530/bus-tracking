@@ -50,6 +50,8 @@ function AddStop(){
             .then(data => {
             if (data.success) {
                 alert("Stop added successfully!");
+                window.location.reload();
+                
             } else {
                 alert("Failed to add stop.");
             }

@@ -37,21 +37,35 @@ function Login(){
             });
             
             if (response.data.success) {
-                
-                navigate("/student-home");
-                localStorage.setItem("username", name1);
-                localStorage.setItem("usernames", "1");
+                const privates=(response.data.privatecheck);          
+                try{             
+                    console.log("sent rollno");
+                    localStorage.setItem("rollno", privates[0]?.rollno);                  
+                    await axios.post("http://localhost:3001/private",{
+                        rollno:privates[0]?.rollno,
+                        username:name1
+                    })
+                    navigate("/student-home");
+                }
+                catch(error){
+                    console.error("roll no not sent",error);
+                }
+
             } else{
                 
                 fname("");
                 fpass("");
-
-                setError(<p id="blue">Invalid username or password </p>);
+                setError("Invalid username or password ");
                 
             }
+
+            
+            localStorage.setItem("username", name1);
+            localStorage.setItem("usernames", "1");
+
         } catch (error) {
             console.error("Login error:", error);
-            setError(<p id="blue">Server error. Please try again.</p>);
+            setError("Server error. Please try again.");
         }
     };
 
