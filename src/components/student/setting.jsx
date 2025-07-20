@@ -17,6 +17,7 @@ function Setting(){
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswor, setShowPasswor] = useState(false);
     const [showPasswo, setShowPasswo] = useState(false);
+    const[color,setcolor]=useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -79,6 +80,8 @@ function Setting(){
             }
             else{
                 alert("update failed");
+                setcolor(true);
+
             }
         }catch{
             alert("hellooooo");
@@ -104,22 +107,22 @@ function Setting(){
                             <p>reset username :</p>
                             <div className="abcd">
                                 <div id="div1">
-                                    <input className="input" type="text" onChange={re_user_1} name="reset-username" value={re_user} required/>
+                                    <input className="input" style={{borderColor:color?"red":"black"}} type="text" onChange={re_user_1} name="reset-username" value={re_user} required/>
                                 </div>
                             </div>
                             <p>old password :</p>
-                            <div className="abc" style={{borderColor:"black"}}>
+                            <div className="abc" style={{borderColor:color?"red":"black"}}>
                                 <input className="input" type={showPassword?"text":"password"} onChange={old_pass_1} name="reset-password" value={old_pass} required/>
                                 <div  id={showPassword ? "div1" : "div2"} onClick={togglePasswordVisibility}></div>
                             </div>
                             <p> new password :</p>
-                            <div className="abc" style={{borderColor:"black"}}>
+                            <div className="abc" style={{borderColor:color?"red":"black"}}>
                                 <input className="input" type={showPasswor?"text":"password"} onChange={re_pass_1} name="reset-password" value={re_pass} required/>
                                 <div id={showPasswor ? "div3" : "div4"} onClick={togglePasswordVisibilit}></div>
                             </div>
                             
                             <p>confirm password :</p>
-                            <div className="abc" style={{borderColor:"black"}}>
+                            <div className="abc" style={{borderColor:color?"red":"black"}}>
                                 <input className="input" type={showPasswo?"text":"password"} onChange={re_passss_1} name="reset-password-1" value={re_passss} required/>
                                 <div id={showPasswo ? "div5" : "div6"} onClick={togglePasswordVisibili}></div>
                             </div>

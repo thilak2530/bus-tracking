@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import AA from "./aa";
 import { useBusTimings} from "../info";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Home() {
+  const navigate=useNavigate();
   const busTimings=useBusTimings();
-  const aaa = localStorage.getItem("usernames");
+  const aaa = localStorage.getItem("busno");
   const [clearTrigger, setClearTrigger] = useState(0); 
 
   async function handleCompleteTrip() {
-    const busNo = parseInt(localStorage.getItem("usernames"));
+    const busNo = parseInt(localStorage.getItem("busno"));
 
     await fetch("http://localhost:3001/driver/complete-trip", {
       method: "POST",
@@ -22,7 +24,8 @@ function Home() {
 
     alert("Trip data cleared from DB!");
     setClearTrigger(prev => prev + 1);
-      localStorage.setItem(`checkedStops_${busNo}`, JSON.stringify([])); 
+    localStorage.setItem(`checkedStops_${busNo}`, JSON.stringify([])); 
+    navigate("/");
   }
 
   const stopKeys = Object.keys(busTimings.find(b => b.bus === parseInt(aaa)) || {}).filter(k => k !== "bus");

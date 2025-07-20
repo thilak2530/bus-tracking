@@ -4,27 +4,36 @@ import { useBusTimings} from "../info";
 
 
 function AA({ stopKey, clearTrigger }) {
-  const busTimings=useBusTimings();
-  const busNo = parseInt(localStorage.getItem("usernames"));
-  const busIndex = busTimings.findIndex((b) => b.bus === busNo);
-  if (busIndex === -1) return null;
-
-  const stop = busTimings[busIndex][stopKey];
-  if (!stop) return null;
-  const stopName = stop[0];
-  const storageKey = `checkedStops_${busNo}`;
-
   const [isChecked, setIsChecked] = useState(false); 
 
+  const busTimings=useBusTimings();
+  const busNo = parseInt(localStorage.getItem("busno"));
+  const busIndex = busTimings.findIndex((b) => b.bus === busNo);
+  
+  let stop = null;
+  let stopName = "";
+  let storageKey = "";
+
+  if (busIndex !== -1) {
+    stop = busTimings[busIndex][stopKey];
+    if (stop) {
+      stopName = stop[0];
+      storageKey = `checkedStops_${busNo}`;
+    }
+  }
+  
+
   useEffect(() => {
+    if (!stopName || !storageKey) return;
     const saved = JSON.parse(localStorage.getItem(storageKey)) || [];
     setIsChecked(saved.includes(stopName));
   }, [stopName, storageKey, clearTrigger]);
 
 
   async function handleClick() {
+    if (isChecked) return;
     const time = new Date().toLocaleTimeString();
-    setIsChecked(true);
+    
 
     try {
       await fetch("http://localhost:3001/driver/send-data", {
@@ -49,6 +58,9 @@ function AA({ stopKey, clearTrigger }) {
       console.error("Failed to send update", error);
     }
   }
+
+  if (!stop) return null;
+
 
   return (
     <div>

@@ -13,7 +13,7 @@ function Admin_login(){
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [selectedRole, setSelectedRole] = useState("");
+    const [selectedRole, setSelectedRole] = useState("admin");
 
   
     
@@ -31,6 +31,7 @@ function Admin_login(){
 
     const handleClick = async (event) => {
         event.preventDefault();
+        localStorage.setItem("selectedRole","admin");
 
         try {
             const response = await axios.post("http://localhost:3001/admin-login", {
@@ -41,9 +42,8 @@ function Admin_login(){
             if (response.data.success) {
                 
                 navigate("/admin-home-main");
-                
                 localStorage.setItem("usernames", name1);
-                localStorage.setItem("username", name1);
+                localStorage.setItem("username", name1);                
             } else{
                 
                 fname("");
@@ -58,27 +58,6 @@ function Admin_login(){
         }
     };
 
-    useEffect(() => {
-    const savedRole = localStorage.getItem("selectedRole");
-    if (savedRole) {
-      setSelectedRole(savedRole);
-    }
-  }, []);
-
-
-    function handleClick1(e){
-        
-        const role=e.target.value;
-        setSelectedRole(role);
-        localStorage.setItem("selectedRole", role); 
-        setTimeout(() => {
-            if (role === "driver") {
-                navigate("/driver-login");
-            } else {
-                navigate("/student-login");
-            }
-        }, 50);
-    }
 
 
 

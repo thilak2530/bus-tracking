@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import AddStop from "./addstop"
+import AddStop from "./addstop";
+import { otherbusinfo } from "../info";
 
 function BusStops() {
+  const busnoo=(otherbusinfo.length);
   const [stops, setStops] = useState([]);
   const [stop, set] = useState(false);
   const [addstop, setaddstop] = useState(false);
+  const [addstopview, setaddstopview] = useState(false);
   const [selectedbusno,setselectedbusno]=useState();
 
     
@@ -13,22 +16,17 @@ function BusStops() {
         if (selectedbusno) {
             fetch(`http://localhost:3001/bus-stops?busNo=${selectedbusno}`)
             .then((res) => res.json())
-            .then((data) => {if(data.length===0){set(true)}else{set(false); } setStops(data)})
-            
+            .then((data) => {if(data.length===0){set(true)}else{set(false); } setStops(data)})       
             .catch((err) => console.error("Error loading stops:", err));
         }
     }, [selectedbusno]);
 
   return (
     <div>
-      <button onClick={() => {setaddstop(true);setselectedbusno(1);}}>Show Bus-1 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(2);}}>Show Bus-2 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(3);}}>Show Bus-3 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(4);}}>Show Bus-4 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(5);}}>Show Bus-5 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(6);}}>Show Bus-6 Stops</button>
-      <button onClick={() => {setaddstop(true);setselectedbusno(7);}}>Show Bus-7 Stops</button>
-      
+      {Array.from({length:busnoo},(_,i)=>(
+        <button key={i+1} onClick={() => {setaddstop(true);setselectedbusno(i+1);setaddstopview(false)}}>Show Bus-{i+1} Stops</button>
+      ))}
+  
        {stop&&<p style={{color:"red",marginTop:"10px"}}>no stops not found</p>}
       
 
@@ -44,12 +42,12 @@ function BusStops() {
           </ul>   
         </div>
       )}
-      {addstop&&<button >add stop+</button>}
-        {addstop && (
-            <div>
-                <AddStop />
-            </div>
-        )}
+      {addstop&&<button onClick={()=>{setaddstopview(true)}}>add stop+</button>}
+      {addstopview && (
+        <div>
+          <AddStop />
+        </div>
+      )}
     </div>
   );
 }

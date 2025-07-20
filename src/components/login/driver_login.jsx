@@ -39,11 +39,32 @@ function Login(){
             });
             
             if (response.data.success) {
+                const privates = response.data.privatecheck;
+
+                const busNo = privates[0]?.busno;
+                if (!busNo) {
+                    alert("No bus number found in response!");
+                    return;
+                }
                 
-                navigate("/driver-home");
-                
-                localStorage.setItem("usernames", name1);
-                localStorage.setItem("username", name1);
+                localStorage.setItem("busno", busNo);
+                localStorage.setItem("selectedRole", "driver"); 
+
+                try {
+                        console.log("sent busno");
+                        const saveRes = await axios.post("http://localhost:3001/private", {
+                        rollno: busNo,
+                        username: busNo
+                    });
+                    if (saveRes.data.success) {                      
+                        navigate("/driver-home");  
+                    } else {
+                        alert("Failed to save bus info. Try again.");
+                    }
+
+                } catch (error) {
+                    alert("Internal error while saving. Try again.");
+                }
             } else{
                 
                 fname("");
