@@ -41,7 +41,10 @@ db.connect()
     .then(() => console.log(" Connected to PostgreSQL"))
     .catch(err => console.error(" Database connection error:", err));
 
-    app.use(cors({ origin: "http://localhost:3000"}));
+    app.use(cors({
+      origin: ["http://localhost:3000", "https://your-vercel-project.vercel.app"], // ✅ replace with your real Vercel URL
+      credentials: true
+    }));
     app.use(bodyParser.json());  
     app.use(bodyParser.urlencoded({ extended: true }));
 
