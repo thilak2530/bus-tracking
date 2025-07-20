@@ -33,7 +33,7 @@ function AddStop(){
 
 
     function handleclick(){
-        fetch("http://localhost:3001/add-bus-stops", {
+        fetch(`${process.env.REACT_APP_BASE_URL}/add-bus-stops`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

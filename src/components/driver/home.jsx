@@ -14,7 +14,7 @@ function Home() {
   async function handleCompleteTrip() {
     const busNo = parseInt(localStorage.getItem("busno"));
 
-    await fetch("http://localhost:3001/driver/complete-trip", {
+    await fetch( `${process.env.REACT_APP_BASE_URL}/driver/complete-trip`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

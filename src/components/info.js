@@ -64,7 +64,7 @@ export function useBusTimings() {
   const [busTimings, setBusTimings] = useState([]);
 
  useEffect(() => {
-  fetch("http://localhost:3001/get-bus-timings")
+  fetch(`${process.env.REACT_APP_BASE_URL}/get-bus-timings`)
     .then((res) => res.json())
     .then((data) => {
       setBusTimings(data);

@@ -31,7 +31,7 @@ function Login(){
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:3001/student-login", {
+            const response = await axios.post( `${process.env.REACT_APP_BASE_URL}/student-login`, {
                 username: name1,
                 password: pass1
             });
@@ -41,7 +41,7 @@ function Login(){
                 try{             
                     console.log("sent rollno");
                     localStorage.setItem("rollno", privates[0]?.rollno);                  
-                    await axios.post("http://localhost:3001/private",{
+                    await axios.post( `${process.env.REACT_APP_BASE_URL}/private`,{
                         rollno:privates[0]?.rollno,
                         username:name1
                     })

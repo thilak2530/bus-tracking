@@ -14,7 +14,7 @@ function Admin() {
 
   const submit=async()=>{
       try{
-          const response = await axios.post("http://localhost:3001/change-pass",{
+          const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/change-pass`,{
             rollno:rollno}
           )
           if(response.data.success){

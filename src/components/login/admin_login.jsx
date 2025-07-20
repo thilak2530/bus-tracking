@@ -34,10 +34,11 @@ function Admin_login(){
         localStorage.setItem("selectedRole","admin");
 
         try {
-            const response = await axios.post("http://localhost:3001/admin-login", {
+            const response = await axios.post( `${process.env.REACT_APP_BASE_URL}/admin-login`, {
                 username: name1,
                 password: pass1
             });
+            console.log("Login Response:", response.data);
             
             if (response.data.success) {
                 
@@ -49,12 +50,12 @@ function Admin_login(){
                 fname("");
                 fpass("");
 
-                setError(<p id="blue">Invalid username or password </p>);
+                setError("Invalid username or password ");
                 
             }
         } catch (error) {
             console.error("Login error:", error);
-            setError( <p id="blue">Server error. Please try again.</p>);
+            setError("Server error. Please try again.");
         }
     };
 

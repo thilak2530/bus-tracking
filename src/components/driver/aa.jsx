@@ -36,7 +36,7 @@ function AA({ stopKey, clearTrigger }) {
     
 
     try {
-      await fetch("http://localhost:3001/driver/send-data", {
+      await fetch( `${process.env.REACT_APP_BASE_URL}/driver/send-data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -63,7 +63,7 @@ function Setting(){
         }
         try{
             
-            const response = await axios.post("http://localhost:3001/reset", {
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/reset`, {
                 re_username:re_user ,
                 re_password:re_pass,
                 username:username,

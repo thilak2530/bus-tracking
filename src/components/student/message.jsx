@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3001");
+const socket = io(process.env.REACT_APP_BASE_URL || "http://localhost:3001", {
+  transports: ["websocket"],
+  secure: true,
+});
 
 function StudentHome() {
   const [updates, setUpdates] = useState([]);
@@ -12,7 +15,7 @@ function StudentHome() {
     
 
     
-    fetch(`http://localhost:3001/student/get-updates/${busNo}`)
+   fetch(`${process.env.REACT_APP_BASE_URL || "http://localhost:3001"}/student/get-updates/${busNo}`)
       .then((res) => res.json())
       .then((data) => setUpdates(data))
       .catch((err) => console.error("Fetch error:", err));

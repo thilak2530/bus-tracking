@@ -15,7 +15,7 @@ export const PrivateRoute = ({ children, allowedRole }) => {
 
   const fetchRollnoData = async (rollno) => {
     try {
-      const response = await fetch(`http://localhost:3001/private/${rollno}`);
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/private/${rollno}`);
       const data = await response.json();
       if (data.success && data.roll.rows.length > 0) {
         setrollnoindb(true);

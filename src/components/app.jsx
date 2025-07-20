@@ -44,7 +44,7 @@ function Clearusername(){
             if(roll){
                 const senddeleterequest=async()=>{
                     try{
-                        await axios.post("http://localhost:3001/private-remove",{
+                        await axios.post(`${process.env.REACT_APP_BASE_URL}/private-remove`,{
                         rollno:roll
                         })
                         console.log("sent rollno to delete");
@@ -60,7 +60,7 @@ function Clearusername(){
             if(bus_no){
                 const senddeleterequest=async()=>{
                     try{
-                        await axios.post("http://localhost:3001/private-remove",{
+                        await axios.post(`${process.env.REACT_APP_BASE_URL}/private-remove`,{
                         rollno:bus_no
                         })
                         console.log("sent rollno to delete");

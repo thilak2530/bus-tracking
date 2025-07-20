@@ -33,7 +33,7 @@ function Login(){
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:3001/driver-login", {
+            const response = await axios.post( `${process.env.REACT_APP_BASE_URL}/driver-login`, {
                 username: name1,
                 password: pass1
             });
@@ -52,7 +52,7 @@ function Login(){
 
                 try {
                         console.log("sent busno");
-                        const saveRes = await axios.post("http://localhost:3001/private", {
+                        const saveRes = await axios.post( `${process.env.REACT_APP_BASE_URL}/private`, {
                         rollno: busNo,
                         username: busNo
                     });

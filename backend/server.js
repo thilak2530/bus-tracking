@@ -13,21 +13,23 @@ dotenv.config();
 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const saltRound= 10;
 
 
 let db;
 
 if (process.env.DATABASE_URL) {
+  console.log("🔗 Using Supabase (REMOTE)");
   db = new pg.Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-      rejectUnauthorized: false // required for Supabase
+      rejectUnauthorized: false
     }
   });
 } else {
-  db = new pg.Client({
+  console.log("💻 Using Local PostgreSQL (LOCAL)");
+  const db = new pg.Client({
     user: process.env.PGUSER,
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
@@ -43,7 +45,7 @@ db.connect()
 
     app.use(cors({
       origin: ["http://localhost:3000", "https://bus-tracking-amber.vercel.app"], // ✅ replace with your real Vercel URL
-      credentials: true
+      
     }));
     app.use(bodyParser.json());  
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -200,7 +202,7 @@ app.post("/change-pass",async(req,res)=>{
 const server = http.createServer(app); 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", 
+    origin: ["http://localhost:3000", "https://bus-tracker-frontend.vercel.app"],
     methods: ["GET", "POST"]
   }
 });
