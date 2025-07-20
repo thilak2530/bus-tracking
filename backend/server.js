@@ -42,7 +42,7 @@ db.connect()
     .catch(err => console.error(" Database connection error:", err));
 
     app.use(cors({
-      origin: ["http://localhost:3000", "https://your-vercel-project.vercel.app"], // ✅ replace with your real Vercel URL
+      origin: ["http://localhost:3000", "https://bus-tracking-amber.vercel.app"], // ✅ replace with your real Vercel URL
       credentials: true
     }));
     app.use(bodyParser.json());  
