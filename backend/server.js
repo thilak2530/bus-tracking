@@ -17,13 +17,24 @@ const port = 3001;
 const saltRound= 10;
 
 
-const db = new pg.Client({
+let db;
+
+if (process.env.DATABASE_URL) {
+  db = new pg.Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false // required for Supabase
+    }
+  });
+} else {
+  db = new pg.Client({
     user: process.env.PGUSER,
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
-});
+  });
+}
 
 
 db.connect()
