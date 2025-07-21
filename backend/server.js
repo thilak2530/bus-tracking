@@ -18,17 +18,10 @@ const saltRound= 10;
 
 
 
-  console.log("💻 Using Local PostgreSQL (LOCAL)");
-  const db = new pg.Client({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT,
-    ssl: {
-    rejectUnauthorized: false,
-    }
-  });
+const db = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});  
 
 
 
