@@ -15,7 +15,7 @@ function Main(){
                         <Link className="link" to={"/admin-login"}>contact</Link>
                         <Link className="link" to={"/admin-login"}>about</Link>
                         <Link className="link" to={"/admin-login"}>features</Link>
-                        <button><Link className="link" to={"/admin-login"}>admin-login</Link></button>
+                        <button className="buttn"><Link className="link" to={"/admin-login"}>admin-login</Link></button>
                     </div>
                    
                 </div>

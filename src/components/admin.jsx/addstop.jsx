@@ -10,23 +10,23 @@ function AddStop(){
 
 
 
-    const handlechange = async(event)=>{
+    const handlechange = (event)=>{
         setbus_no(event.target.value);
         
     }
-     const handlechang = async(event)=>{
+     const handlechang = (event)=>{
         setbus_alpha(event.target.value);
         
     }
-     const handlechan = async(event)=>{
+     const handlechan = (event)=>{
         setbus_stopp(event.target.value);
         
     }
-     const handlecha = async(event)=>{
+     const handlecha = (event)=>{
         setbus_arrive(event.target.value);
         
     }
-     const handlech = async(event)=>{
+     const handlech = (event)=>{
         setbus_depart(event.target.value);
         
     }

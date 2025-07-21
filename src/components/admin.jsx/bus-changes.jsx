@@ -10,11 +10,11 @@ function BusStops() {
   const [addstopview, setaddstopview] = useState(false);
   const [selectedbusno,setselectedbusno]=useState();
 
-    
+   
 
   useEffect(() => {
         if (selectedbusno) {
-            fetch(`http://localhost:3001/bus-stops?busNo=${selectedbusno}`)
+            fetch(`${process.env.REACT_APP_BASE_URL}/bus-stops?busNo=${selectedbusno}`)
             .then((res) => res.json())
             .then((data) => {if(data.length===0){set(true)}else{set(false); } setStops(data)})       
             .catch((err) => console.error("Error loading stops:", err));

@@ -70,12 +70,12 @@ function Login(){
                 fname("");
                 fpass("");
 
-                setError(<p id="blue">Invalid username or password </p>);
+                setError("Invalid username or password ");
                 
             }
         } catch (error) {
             console.error("Login error:", error);
-            setError( <p id="blue">Server error. Please try again.</p>);
+            setError(" Server error. Please try again.");
         }
     };
 

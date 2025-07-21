@@ -20,7 +20,7 @@ function Admin() {
           if(response.data.success){
             alert("succesfully changed password to 12345");
             setrollno("");
-            setpress(false);
+            
           }
       }
       catch(error)
@@ -38,7 +38,7 @@ function Admin() {
         <button  onClick={submit} >change</button>
       </div>
     </div>
-  );s
+  );
 }
 
 export default Admin;
