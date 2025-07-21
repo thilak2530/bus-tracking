@@ -25,6 +25,9 @@ const saltRound= 10;
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
+    ssl: {
+    rejectUnauthorized: false,
+    }
   });
 
 
