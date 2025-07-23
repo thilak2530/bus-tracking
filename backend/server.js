@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser"
-import cors from "cors";
+import cors from 'cors';
 import pg from "pg";
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv';
@@ -12,10 +12,14 @@ dotenv.config();
 
 
 
+
+
 const app = express();
 const port = process.env.PORT || 3001;
 const saltRound= 10;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const db = new pg.Client({
@@ -29,12 +33,13 @@ db.connect()
     .then(() => console.log(" Connected to PostgreSQL"))
     .catch(err => console.error(" Database connection error:", err));
 
-    app.use(cors({
-      origin:  [process.env.FRONTEND_URL ||"http://localhost:3000", ], 
-      
-    }));
-    app.use(bodyParser.json());  
-    app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.post("/admin-login", async (req, res) => {
   const { username, password } = req.body;  
@@ -188,8 +193,9 @@ app.post("/change-pass",async(req,res)=>{
 const server = http.createServer(app); 
 const io = new Server(server, {
   cors: {
-    origin:  [process.env.FRONTEND_URL ||"http://localhost:3000", ],
-    methods: ["GET", "POST"]
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
