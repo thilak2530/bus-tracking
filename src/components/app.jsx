@@ -91,9 +91,9 @@ function App(){
                 <Route path="/driver-login" element={<Login_Driver />} />
                 <Route path="/student-login" element={<Login_Student />} />
                 <Route path="/admin-login" element={<Admin_login />} />
-                <Route path="/password-change" element={<Admin/>} />
-                <Route path="/bus-changes" element={<Bus_changes/>} />
-                <Route path="/admin-home-main" element={<Admin_home_main/>} />
+                <Route path="/password-change" element={<PrivateRoute allowedRole="admin"><Admin/></PrivateRoute>} />
+                <Route path="/bus-changes" element={<PrivateRoute allowedRole="admin"><Bus_changes/></PrivateRoute>} />
+                <Route path="/admin-home-main" element={<PrivateRoute allowedRole="admin"><Admin_home_main/></PrivateRoute>} />
                 <Route path="/driver-home" element={<PrivateRoute allowedRole="driver"><DriverHome /></PrivateRoute>}/> 
                 <Route path="/student-home" element={<PrivateRoute allowedRole="student"><StudentHome /></PrivateRoute>}/> 
                 <Route path="/setting" element={<PrivateRoute allowedRole="student"><Setting /></PrivateRoute>} />
