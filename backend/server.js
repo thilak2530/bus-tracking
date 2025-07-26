@@ -6,7 +6,6 @@ import bcrypt from "bcrypt";
 import dotenv from 'dotenv';
 import { Server } from "socket.io";
 import http from "http";
-
 dotenv.config();
 
 
@@ -22,21 +21,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-const db = new pg.Client({
+const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 });  
 
 
 
-db.connect()
-    .then(() => console.log(" Connected to PostgreSQL"))
-    .catch(err => console.error(" Database connection error:", err));
+
+db.query("SELECT 1")
+  .then(() => console.log("✅ PostgreSQL connected successfully."))
+  .catch((err) => {
+    console.error("❌ Database connection failed:", err.message);
+  });
 
 
 
 app.use(cors({
-  origin: [process.env.FRONTEND_URL,process.env.FRONTEND_URL_2],
+  origin: [process.env.FRONTEND_URL],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -193,7 +195,7 @@ app.post("/change-pass",async(req,res)=>{
 const server = http.createServer(app); 
 const io = new Server(server, {
   cors: {
-    origin: [process.env.FRONTEND_URL,process.env.FRONTEND_URL_2],
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST"],
     credentials: true
   }

@@ -13,7 +13,8 @@ function Admin_login(){
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [selectedRole, setSelectedRole] = useState("admin");
+    
+    localStorage.setItem("selectedRole","admin");
 
   
     
@@ -31,7 +32,7 @@ function Admin_login(){
 
     const handleClick = async (event) => {
         event.preventDefault();
-        localStorage.setItem("selectedRole","admin");
+        
 
         try {
             const response = await axios.post( `${process.env.REACT_APP_BASE_URL}/admin-login`, {

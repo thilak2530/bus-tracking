@@ -178,7 +178,7 @@ input::placeholder{
     cursor: pointer;
     background-image: url("../open.svg");
     -webkit-tap-highlight-color: transparent;
-    background-color: white;
+    
     
 }
 .inputbox #div2,.abc #div2 {
