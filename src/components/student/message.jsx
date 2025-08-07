@@ -31,17 +31,27 @@ function StudentHome() {
       socket.off("bus-data");
     };
   }, [busNo]);
+  
 
   return (
     <div className="message-home-main">
       <div className="message-home">
         <h2>Live Bus Updates</h2>
         {updates.length === 0 && <p>Bus Ready to Start</p>}
-        {updates.map((item, index) => (
-          <div key={index}>
-            <p>🚌 Bus is at {item.stop} ({item.time})</p>
-          </div>
-        ))}
+        {updates.map((item, index) => {
+          // Format time to 12-hour format
+          const formattedTime = new Date(item.time).toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+
+          return (
+            <div key={index}>
+              <p>🚌 Bus is at {item.stop} ({formattedTime})</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

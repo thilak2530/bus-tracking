@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AA from "./aa";
 import { useBusTimings} from "../info";
 import { useNavigate } from "react-router-dom";
-
+import DriverTracker from "./livetracking";
 
 
 function Home() {
@@ -31,7 +31,9 @@ function Home() {
   const stopKeys = Object.keys(busTimings.find(b => b.bus === parseInt(aaa)) || {}).filter(k => k !== "bus");
 
   return (
+    
     <div className="driver-main">
+      <DriverTracker />
       <div className="driver-main1">
         <p>BUS NO {aaa}</p>
         <div className="bus-places">
@@ -40,6 +42,7 @@ function Home() {
           ))}
         </div>
         <input id="submit" type="button" onClick={handleCompleteTrip} value="Trip Completed" />
+
       </div>
     </div>
   );

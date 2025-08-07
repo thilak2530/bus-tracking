@@ -8,7 +8,8 @@ export const PrivateRoute = ({ children, allowedRole }) => {
   const [rollnoindb, setrollnoindb] = useState(false);
   const [loading, setLoading] = useState(true);
   const bus_user = localStorage.getItem("busno");
-  const isAuthenticated = (role === "student" && rollno) || (role === "driver" && bus_user);
+  const admin_name=localStorage.getItem("admin_name")
+  const isAuthenticated = (role === "student" && rollno) || (role === "driver" && bus_user)||(role==="admin"&&admin_name);
 
  
 
@@ -36,34 +37,36 @@ export const PrivateRoute = ({ children, allowedRole }) => {
       fetchRollnoData(rollno);
     } else if (role === "driver" && bus_user) {
       fetchRollnoData(bus_user);
+    }  else if (role === "admin" && admin_name) {
+      fetchRollnoData(bus_user);
     } else {    
       setLoading(false);
     }
-  }, [role, rollno, bus_user]);
+  }, [role, rollno, bus_user,admin_name]);
 
   if (loading) return null;
 
 
   if (role !== allowedRole) {
   return <Navigate to="/kitsw-bus-tracking" />;
-}
+  }
  
-if (!isAuthenticated ) {
-  return <Navigate to="/kitsw-bus-tracking" />;
-}
-
-
-if (role === "student") {
-  if (!rollno || !rollnoindb) {
+  if (!isAuthenticated ) {
     return <Navigate to="/kitsw-bus-tracking" />;
   }
-}
 
-if (role === "driver") {
-  if (!bus_user || !rollnoindb) {
-    return <Navigate to="/kitsw-bus-tracking" />;
+
+  if (role === "student") {
+    if (!rollno || !rollnoindb) {
+      return <Navigate to="/kitsw-bus-tracking" />;
+    }
   }
-}
+
+  if (role === "driver") {
+    if (!bus_user || !rollnoindb) {
+      return <Navigate to="/kitsw-bus-tracking" />;
+    }
+  }
 
 
   return children;

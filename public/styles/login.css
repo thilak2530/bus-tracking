@@ -181,7 +181,8 @@ input::placeholder{
     cursor: pointer;
     background-image: url("../open.svg");
     -webkit-tap-highlight-color: transparent;
-    background-color: white;
+    background-color: none;
+    
     
 }
 .inputbox #div2,.abc #div2 {
@@ -193,7 +194,7 @@ input::placeholder{
     background-repeat: no-repeat;
     cursor: pointer;
     background-image: url("../close.svg");
-     -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
      
 }
 #blue{
@@ -227,19 +228,19 @@ input::placeholder{
         font-weight: 800;
         color: black;
         background: linear-gradient(to right, #79bfc8, #4fbdce, #36a6b7);
-        width: 135px;
+        width: 35%;
         border-radius: 7px;
         font-family: "Poppins", sans-serif;
         position: absolute;
-        top: 45px;
-        left: 33%;
+        top: 6%;
+        left: 31%;
         padding-left: 15px;
     }
     .signBox h5{
         line-height: 100%;
         color: black;
         padding-top: 13px;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         font-family: "Poppins", sans-serif;  
     }
@@ -247,10 +248,12 @@ input::placeholder{
         margin-top: 15px;
     }
     .signBox{
+        margin-top: 30px;
         width: 80%;
         max-width: 644px;
         min-width: 300px;
-        height: 600px;
+        height: 75vh;
+        min-height: 470px;
         background-color: rgb(255, 255, 255,0.9);
        border-radius: 10px;
        border: 0.5 solid #878787;

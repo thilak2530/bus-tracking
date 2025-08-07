@@ -29,10 +29,7 @@ html{
     height: 85vh;
     width: 25%;
     border-radius:25px 0px 0px 25px; 
-     /* background: linear-gradient(to left, #cba87bcd, #a99e82); */
-     /* background: linear-gradient(to left,#b7ab8f,  #c0b390); */
-     background: linear-gradient(to left,#bbb5a8,  #c0b390);
-     /* background: linear-gradient(to left,#b2ac9f,  #c0b390); */
+    background: linear-gradient(to left,#bbb5a8,  #c0b390);
     text-align: center;
     display:flex;
     flex-direction: column;
@@ -101,9 +98,7 @@ html{
     overflow-y: auto;
     overflow-x: hidden; 
     scrollbar-width: none;
-     /* background: linear-gradient(to right, #cba87bcd, #a99e82); */
-     /* background: linear-gradient(to right,#b7ab8f,  #c0b390);   */
-     background: linear-gradient(to right,#b2ac9f,  #c0b390);
+     background-color: #b1ab98; 
      border-top-right-radius: 25px; 
      border-bottom-right-radius: 25px; 
      
@@ -125,7 +120,6 @@ html{
     justify-content: center;
     align-items: center;
     background-color: rgba(221, 220, 220, 0.6);
-    /* background: linear-gradient(to right,#c3b493,  #a99e82); */
     border-radius: 10px;
     margin-top: 15px;
     box-shadow: 10px 10px 10px 1px rgba(140, 120, 77, 0.8);
@@ -192,7 +186,6 @@ html{
     width: 75%;
     margin-left: 12.5%; 
     margin-right: 12.5%;
-    /* background-color: black; */
     background-color: rgba(221, 220, 220, 0.6);
     display: flex;
     flex-wrap: wrap;
@@ -232,6 +225,7 @@ html{
     width: 100%;
     height: 5vh;
     
+    
 }
 @media(max-width:440px){
     .homepage{
@@ -252,7 +246,6 @@ html{
         height: 100vh;
         width: 100%;
         border-radius:0px;
-        background-color: rgb(208, 157, 18);
         text-align: center;
         display:none ;
         flex-direction: column;
@@ -269,6 +262,7 @@ html{
         overflow-y: auto;
         overflow-x: hidden;  
         scrollbar-width: none;
+        background-color: #b1ab98; 
     }
     .mainbox{   
         height:95vh;
@@ -389,7 +383,7 @@ html{
         display: flex;
         width: 100px;
         height: 3vh;
-        margin:6%; 
+        margin:6% 6% 6% 3%; 
         margin-top: 40px;   
     }
     .tink img{

@@ -35,15 +35,15 @@ export const otherbusinfo =[
         no:"1"
     },
     {
-        img:`${process.env.PUBLIC_URL}/homeimg/busimg.png`,
+        img:`${process.env.PUBLIC_URL}/homeimg/bus5.png`,
         no:"2"
     },
     {
-        img:`${process.env.PUBLIC_URL}/homeimg/busimg.png`,
+        img:`${process.env.PUBLIC_URL}/homeimg/bus5.png`,
         no:"3"
     },
     {
-        img:`${process.env.PUBLIC_URL}/homeimg/busimg.png`,
+        img:`${process.env.PUBLIC_URL}/homeimg/bus5.png`,
         no:"4"
     },
     {
@@ -53,6 +53,10 @@ export const otherbusinfo =[
     {
         img:`${process.env.PUBLIC_URL}/homeimg/bus5.png`,
         no:"6"
+    },
+    {
+        img:`${process.env.PUBLIC_URL}/homeimg/bus5.png`,
+        no:"7"
     },
     
 ]

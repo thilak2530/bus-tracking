@@ -28,38 +28,13 @@ function Bus_timing(){
         navigate("/student-home")
     }
 
-        let busData;
-        switch (parseInt(abba)) {
-        case 1:
-            busData = stops1[0];
-            break;
-        case 2:
-            busData = stops1[1];
-            break;
-        case 3:
-            busData = stops1[2];
-            break;
-        case 4:
-            busData = stops1[3];
-            break;
-        case 5:
-            busData = stops1[4];
-            break;
-        case 6:
-            busData = stops1[5];
-            break;
-        case 7:
-            busData = stops1[6];
-            break;
-        default:
-            busData = null;
-            break;
-        }
+        
+       const busData = stops1.find((busses) => parseInt(busses.bus) === parseInt(abba));
 
 
     return(
         <div className="bus-timing-page">
-            <Sidebox />
+             <Sidebox />
             <div className="timings-main">
             <div className="tink" onClick={open}>
                 <img src={`${process.env.PUBLIC_URL}/homeimg/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} alt="h"/> 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Home1, Otherbus ,Ourbus} from "./home1";
 import { info, otherbusinfo } from "../info";
 import { useLocation, useNavigate } from "react-router-dom"; 
@@ -13,6 +13,8 @@ import Sidebox from "./sidebox";
 
 
 function Homes(){
+
+        const aaaa = useRef(null);
 
         const username = localStorage.getItem("username");
         const navigate = useNavigate();
@@ -51,12 +53,12 @@ function Homes(){
      
         function handleBusClick(no,img){
             setSelectedNo(no);setSelectedImg(img); 
-            localStorage.setItem("usernames",no)  
-           
+            localStorage.setItem("usernames",no);
+            aaaa.current?.scrollIntoView({ behavior:"smooth" });      
             
         }
         
-        
+      
        
         
     
@@ -69,7 +71,7 @@ function Homes(){
                     <img src={`${process.env.PUBLIC_URL}/homeimg/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} /> 
                 </div>  
                 <div className="mainbox">      
-                    <div className="aaa">
+                    <div className="aaa" ref={aaaa}>
                             <h1>Hey {username},<br />here is your bus</h1>
                             <h2>My bus</h2>
                             <Ourbus 
@@ -83,6 +85,7 @@ function Homes(){
 
                             {otherbusinfo.map((bus, index) => (
                                 <Otherbus
+                                    
                                     key={index}
                                     img={bus.img}
                                     no={bus.no}

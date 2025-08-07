@@ -39,10 +39,10 @@ import { info } from "../info";
  
         }
 
-function Sidebox(){
+function Sidebox({style}){
     const username = localStorage.getItem("username");
     return(
-        <div className="sidebox">
+        <div className="sidebox" style={style}>
                       
                         <div className="userinfo">
                             <img src={`${process.env.PUBLIC_URL}/homeimg/busimg.png`} alt="" />

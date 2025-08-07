@@ -34,12 +34,13 @@ function Clearusername(){
         if(location.pathname==="/driver-login"){localStorage.setItem("selectedRole","driver")}
         if(location.pathname==="/student-login"){localStorage.setItem("selectedRole","student")}
 
-        if (location.pathname === "/" ||location.pathname === "/kitsw-bus-tracking" || location.pathname === "/driver-login" || location.pathname === "/student-login") {
+        if (location.pathname === "/" ||location.pathname === "/kitsw-bus-tracking" || location.pathname === "/driver-login" || location.pathname === "/student-login"|| location.pathname === "/admin-login") {
             
             localStorage.removeItem("username");
             localStorage.removeItem("usernames");
             const bus_no=localStorage.getItem("busno");
             const roll=localStorage.getItem("rollno");
+            const admin_name=localStorage.getItem("admin_name")
 
             if(roll){
                 const senddeleterequest=async()=>{
@@ -47,14 +48,30 @@ function Clearusername(){
                         await axios.post(`${process.env.REACT_APP_BASE_URL}/private-remove`,{
                         rollno:roll
                         })
-                        console.log("sent rollno to delete");
+                        console.log(" rollno to deleted in private");
                         
                     }
                     catch(error){
-                    console.error("roll no not sent to delete",error);
+                    console.error("roll no not deleted in private",error);
                 }}
                 senddeleterequest();
             localStorage.removeItem("rollno");
+            }
+
+            if(admin_name){
+                const senddeleterequest=async()=>{
+                    try{
+                        await axios.post(`${process.env.REACT_APP_BASE_URL}/private-remove`,{
+                        rollno:admin_name
+                        })
+                        console.log("admin-deleted in private ");
+                        
+                    }
+                    catch(error){
+                    console.error("admin_name no not  deleted in private",error);
+                }}
+                senddeleterequest();
+                localStorage.removeItem("admin_name");
             }
 
             if(bus_no){
@@ -63,11 +80,11 @@ function Clearusername(){
                         await axios.post(`${process.env.REACT_APP_BASE_URL}/private-remove`,{
                         rollno:bus_no
                         })
-                        console.log("sent rollno to delete");
+                        console.log(" busno to deleted in private");
                         
                     }
                     catch(error){
-                    console.error("roll no not sent to delete",error);
+                    console.error("busno no not deleted in private",error);
                 }}
                 senddeleterequest();
                 localStorage.removeItem("busno");
@@ -91,9 +108,9 @@ function App(){
                 <Route path="/driver-login" element={<Login_Driver />} />
                 <Route path="/student-login" element={<Login_Student />} />
                 <Route path="/admin-login" element={<Admin_login />} />
-                <Route path="/password-change" element={<Admin/>} />
-                <Route path="/bus-changes" element={<Bus_changes/>} />
-                <Route path="/admin-home-main" element={<Admin_home_main/>} />
+                <Route path="/password-change" element={<PrivateRoute allowedRole="admin"><Admin/></PrivateRoute>} />
+                <Route path="/bus-changes" element={<PrivateRoute allowedRole="admin"><Bus_changes/></PrivateRoute>} />
+                <Route path="/admin-home-main" element={<PrivateRoute allowedRole="admin"><Admin_home_main/></PrivateRoute>} />
                 <Route path="/driver-home" element={<PrivateRoute allowedRole="driver"><DriverHome /></PrivateRoute>}/> 
                 <Route path="/student-home" element={<PrivateRoute allowedRole="student"><StudentHome /></PrivateRoute>}/> 
                 <Route path="/setting" element={<PrivateRoute allowedRole="student"><Setting /></PrivateRoute>} />
