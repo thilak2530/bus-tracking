@@ -12,7 +12,7 @@ function DriverTracker() {
       const busno = localStorage.getItem("busno");
       if (busno) {
         try {
-          const res = await fetch(`http://localhost:3001/bus-stops?busNo=${busno}`);
+          const res = await fetch(`${process.env.REACT_APP_BASE_URL}/bus-stops?busNo=${busno}`);
           const data = await res.json();
           setStops(data); // Expected format: [{ stop_key, stop_name, lat, lng }, ...]
         } catch (err) {
@@ -54,7 +54,7 @@ function DriverTracker() {
         console.log("Live Location:", latitude, longitude);
 
         // Send location to backend
-        fetch("http://localhost:3001/update-driver-location", {
+        fetch(`${process.env.REACT_APP_BASE_URL}/update-driver-location`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -72,7 +72,7 @@ function DriverTracker() {
             console.log(`✅ Reached ${stop.stop_name}, auto-triggering!`);
 
             // Send to backend that stop is reached
-            fetch("http://localhost:3001/stop-reached", {
+            fetch(`${process.env.REACT_APP_BASE_URL}/stop-reached`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

@@ -13,7 +13,7 @@ function TrackingBus() {
     const fetchStops = async () => {
       const busno = localStorage.getItem("usernames");
       try {
-        const response = await fetch(`http://localhost:3001/get-bus-timings/${busno}`);
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/get-bus-timings/${busno}`);
         const data = await response.json();
         console.log("Fetched Bus Stops:", data);
         setStops(data);
@@ -64,7 +64,7 @@ function TrackingBus() {
     const intervalId = setInterval(async () => {
       try {
         const driver = localStorage.getItem("usernames");
-        const res = await fetch(`http://localhost:3001/live-location/${driver}`);
+        const res = await fetch(`${process.env.REACT_APP_BASE_URL}/live-location/${driver}`);
         const data = await res.json();
 
         if (data && window.google && googleMap.current) {
