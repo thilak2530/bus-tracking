@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 function DriverTracker() {
   const watchIdRef = useRef(null);
@@ -12,11 +13,10 @@ function DriverTracker() {
       const busno = localStorage.getItem("busno");
       if (busno) {
         try {
-          const res = await fetch(`${process.env.REACT_APP_BASE_URL}/bus-stops?busNo=${busno}`);
-          const data = await res.json();
-          setStops(data); // Expected format: [{ stop_key, stop_name, lat, lng }, ...]
+          const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/bus-stops?busNo=${busno}`);
+          setStops(res.data); // Expected format: [{ stop_key, stop_name, lat, lng }, ...]
         } catch (err) {
-          console.error("Error fetching stops:", err);
+          console.error("❌ Error fetching stops:", err);
         }
       }
     };
@@ -47,44 +47,47 @@ function DriverTracker() {
     setTripActive(true);
 
     watchIdRef.current = navigator.geolocation.watchPosition(
-      (position) => {
+      async (position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
+        const busno = localStorage.getItem("busno");
 
         console.log("Live Location:", latitude, longitude);
 
-        // Send location to backend
-        fetch(`${process.env.REACT_APP_BASE_URL}/update_location`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            driver: localStorage.getItem("busno"),
+        // ✅ Send location to backend
+        try {
+          await axios.post(`${process.env.REACT_APP_BASE_URL}/update_location`, {
+            driver: busno,
             latitude,
             longitude,
-          }),
-        });
+          });
+          console.log("✅ Location updated");
+        } catch (err) {
+          console.error("❌ Error updating location:", err.response?.data || err.message);
+        }
 
         // ✅ Check if near any stop
         for (const stop of stops) {
           const distance = getDistanceMeters(latitude, longitude, stop.lat, stop.lng);
+
           if (distance < 150 && !triggeredStopsRef.current.has(stop.stop_key)) {
             triggeredStopsRef.current.add(stop.stop_key);
             console.log(`✅ Reached ${stop.stop_name}, auto-triggering!`);
 
-            // Send to backend that stop is reached
-            fetch(`${process.env.REACT_APP_BASE_URL}/stop_reached`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
+            try {
+              await axios.post(`${process.env.REACT_APP_BASE_URL}/stop_reached`, {
                 stop_key: stop.stop_key,
                 stop_name: stop.stop_name,
-                bus_number: localStorage.getItem("busno"),
+                bus_number: busno,
                 timestamp: new Date().toISOString(),
-              }),
-            });
+              });
+              console.log("✅ stop_reached sent successfully");
+            } catch (err) {
+              console.error("❌ Error sending stop_reached:", err.response?.data || err.message);
+            }
 
             // ✅ Update localStorage so UI reflects checked status
-            const storageKey = `checkedStops_${localStorage.getItem("busno")}`;
+            const storageKey = `checkedStops_${busno}`;
             const prev = JSON.parse(localStorage.getItem(storageKey)) || [];
             const updated = [...new Set([...prev, stop.stop_name])];
             localStorage.setItem(storageKey, JSON.stringify(updated));
