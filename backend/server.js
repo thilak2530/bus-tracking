@@ -365,6 +365,7 @@ app.post("/update_location", async (req, res) => {
     res.status(500).json({ error: "Failed to update location" });
   }
 });
+console.log("✅ /update-driver-location route registered");
 
 
 
@@ -425,6 +426,7 @@ app.post("/stop_reached", async (req, res) => {
     res.status(500).json({ success: false });
   }
 });
+console.log("✅ /stop_reached route registered");
 
 
 
