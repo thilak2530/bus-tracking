@@ -5,6 +5,8 @@
   "keywords": [],
   "main": "index.js",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.10",
+    "@react-google-maps/api": "^2.20.7",
     "ajv": "^8.11.0",
     "ajv-errors": "^3.0.0",
     "axios": "^1.8.4",

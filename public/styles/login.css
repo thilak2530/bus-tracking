@@ -240,7 +240,7 @@ input::placeholder{
         line-height: 100%;
         color: black;
         padding-top: 13px;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         font-family: "Poppins", sans-serif;  
     }
@@ -252,7 +252,7 @@ input::placeholder{
         width: 80%;
         max-width: 644px;
         min-width: 300px;
-        height: 70vh;
+        height: 75vh;
         min-height: 470px;
         background-color: rgb(255, 255, 255,0.9);
        border-radius: 10px;

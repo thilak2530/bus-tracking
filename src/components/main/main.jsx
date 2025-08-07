@@ -1,6 +1,8 @@
-import React , {useRef} from "react";
+import React , {useRef,useState} from "react";
 import { Link } from "react-router-dom";
-import "./main.css";
+import "../css/main.css";
+
+
 
 
 function Boxx(props){
@@ -15,6 +17,31 @@ function Boxx(props){
 function Main(){
 
     const logins = useRef(null);
+    const sidebox=document.getElementsByClassName("div1")[0];
+    
+    if (window.innerWidth <= 440) {
+        if (sidebox) sidebox.style.display = "none";   
+    }
+   
+    if(window.innerWidth >= 440){
+        if (sidebox) sidebox.style.display = "flex";
+
+    }
+
+    const [showMenu, setShowMenu] = useState(false);
+   const toggleSidebar = () => {
+        setShowMenu((prev) => {
+            const newState = !prev;
+            const section = document.querySelector(".section");
+            if (section) {
+                section.style.display = newState ? "none" : "block";
+            }
+            return newState;
+        });
+    };
+
+    
+
 
     return(
         <div className="supermain">
@@ -24,23 +51,30 @@ function Main(){
                     <img src="" alt="" />
                 </div>
                 <div id="buttons">
-                    <div>
-                        <Link className="link" to={"/#"}>Contact</Link>
-                        <Link className="link" to={"/#"}>About</Link>
-                        <Link className="link" to={"/#"}>Features</Link>
-                        
+                    <div className="div1">
+                        <Link className="link" to={"/#"}><button className="hover">Contact</button></Link>
+                        <Link className="link" to={"/#"}><button className="hover">About</button></Link>
+                        <Link className="link" to={"/#"}><button className="hover">Features</button></Link>              
                     </div>
-                   
+                   <div className="div2"  ><img onClick={toggleSidebar} src={`${process.env.PUBLIC_URL}/homeimg/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`} /> </div>
                 </div>
             </nav>
 
+            {showMenu && (
+                <div className="sidebar_main">
+                    <Link className="link" to={"/#"}><button>Contact</button></Link>
+                    <Link className="link" to={"/#"}><button>About</button></Link>
+                    <Link className="link" to={"/#"}><button>Features</button></Link> 
+                </div>)
+            }
+
 
             
-            <section>
+            <section className="section">
                 <div className="main">
                     <div className="text">
                         <h2>Track your selected bus in real-time</h2>
-                        <p>Real-time bus tracking system designed to simplify student transportation. Know exactly where your bus is — anytime, anywhere.</p>
+                        <p>Real-time bus tracking system designed to simplify student transportation. Know exactly where your bus is anytime, anywhere.</p>
                         <button onClick={()=>
                             {
                                 document.querySelector(".main1").style.display="flex";

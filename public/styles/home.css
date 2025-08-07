@@ -29,7 +29,7 @@ html{
     height: 85vh;
     width: 25%;
     border-radius:25px 0px 0px 25px; 
-     background: linear-gradient(to left,#bbb5a8,  #c0b390);
+    background: linear-gradient(to left,#bbb5a8,  #c0b390);
     text-align: center;
     display:flex;
     flex-direction: column;
@@ -98,7 +98,7 @@ html{
     overflow-y: auto;
     overflow-x: hidden; 
     scrollbar-width: none;
-     background: linear-gradient(to right,#b2ac9f,  #c0b390);
+     background-color: #b1ab98; 
      border-top-right-radius: 25px; 
      border-bottom-right-radius: 25px; 
      
@@ -246,7 +246,6 @@ html{
         height: 100vh;
         width: 100%;
         border-radius:0px;
-        background-color: rgb(208, 157, 18);
         text-align: center;
         display:none ;
         flex-direction: column;
@@ -263,7 +262,7 @@ html{
         overflow-y: auto;
         overflow-x: hidden;  
         scrollbar-width: none;
-        background: linear-gradient(to right,#b2ac9f,  #c0b390);
+        background-color: #b1ab98; 
     }
     .mainbox{   
         height:95vh;

@@ -5,7 +5,8 @@
     border-radius: 25px;   
     box-shadow: 10px 10px 10px 1px rgba(172, 118, 11, 0.3);
     /* background-color: rgb(184, 179, 157); */
-    background: linear-gradient(to right,#c0bcb5,  #c0b390);
+    /* background: linear-gradient(to right,#a6a090,  #c0b390); */
+    background-color: #b1ab98; 
     
 }
 .bus-timings{

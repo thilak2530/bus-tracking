@@ -1,0 +1,34 @@
+.trackor-main{
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+
+}
+.maps{
+    width:100%;
+    height: 85vh;
+    border-radius: 0px 25px 25px 0px; 
+}
+
+@media(max-width:440px){
+    .trackor-main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0px;
+    
+
+}
+.maps{
+    width:100%;
+    height: 100vh;
+    border-radius: 0px ; 
+    
+}
+
+}

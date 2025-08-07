@@ -42,10 +42,27 @@ function Admin_login(){
             console.log("Login Response:", response.data);
             
             if (response.data.success) {
-                
-                navigate("/admin-home-main");
-                localStorage.setItem("usernames", name1);
-                localStorage.setItem("username", name1);                
+                localStorage.setItem("username", name1);
+                const privates=(response.data.privatecheck); 
+
+                try {
+                        console.log("sent admin");
+                        localStorage.setItem("admin_name", privates[0]?.admin_name); 
+                        const save = await axios.post( `${process.env.REACT_APP_BASE_URL}/private`, {
+                        rollno: privates[0]?.admin_name,
+                        username: name1
+                    });
+                    if (save.data.success) {                      
+                        navigate("/admin-home-main"); 
+                    } else {
+                        alert("Failed to save bus info. Try again.");
+                    }
+
+                } catch (error) {
+                    alert("Internal error while saving. Try again.");
+                }
+
+                                
             } else{
                 
                 fname("");
