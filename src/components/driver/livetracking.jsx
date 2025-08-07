@@ -54,7 +54,7 @@ function DriverTracker() {
         console.log("Live Location:", latitude, longitude);
 
         // Send location to backend
-        fetch(`${process.env.REACT_APP_BASE_URL}/update-driver-location`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/update_location`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -72,7 +72,7 @@ function DriverTracker() {
             console.log(`✅ Reached ${stop.stop_name}, auto-triggering!`);
 
             // Send to backend that stop is reached
-            fetch(`${process.env.REACT_APP_BASE_URL}/stop-reached`, {
+            fetch(`${process.env.REACT_APP_BASE_URL}/stop_reached`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

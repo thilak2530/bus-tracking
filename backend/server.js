@@ -24,20 +24,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
-});
+});  
 
 
-db.on("error", (err) => {
-  console.error(" Unexpected PostgreSQL client error:", err);
-
-});
 
 
 db.query("SELECT 1")
   .then(() => console.log("✅ PostgreSQL connected successfully."))
   .catch((err) => {
-    console.error("❌ PostgreSQL connection failed:", err.message);
-    process.exit(1);
+    console.error("❌ Database connection failed:", err.message);
   });
 
 
@@ -356,7 +351,7 @@ app.post("/driver/complete-trip", async (req, res) => {
 
 
 
-app.post("/update-driver-location", async (req, res) => {
+app.post("/update_location", async (req, res) => {
   const { driver, latitude, longitude } = req.body;
 
   try {
@@ -406,7 +401,7 @@ app.get("/get-bus-timings/:busno", async (req, res) => {
   }
 });
 
-app.post("/stop-reached", async (req, res) => {
+app.post("/stop_reached", async (req, res) => {
   const { stop_key, stop_name, bus_number, timestamp } = req.body;
 
   try {
@@ -434,6 +429,6 @@ app.post("/stop-reached", async (req, res) => {
 
 
 server.listen(port, () => {
-  console.log(`Server running on:${port}`);
+  console.log(`Server running on :${port}`);
 });
 
