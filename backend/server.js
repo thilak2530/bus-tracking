@@ -24,15 +24,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
-});  
+});
 
 
+db.on("error", (err) => {
+  console.error(" Unexpected PostgreSQL client error:", err);
+
+});
 
 
 db.query("SELECT 1")
   .then(() => console.log("✅ PostgreSQL connected successfully."))
   .catch((err) => {
-    console.error("❌ Database connection failed:", err.message);
+    console.error("❌ PostgreSQL connection failed:", err.message);
+    process.exit(1);
   });
 
 
