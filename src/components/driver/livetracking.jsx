@@ -7,40 +7,61 @@ function DriverTracker() {
   const [stops, setStops] = useState([]);
   const triggeredStopsRef = useRef(new Set());
 
-  // ✅ Fetch stop coordinates for this bus from backend
+  // ✅ Always use the environment variable
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  if (!BASE_URL) {
+    console.error("❌ Missing REACT_APP_BASE_URL in .env file");
+  }
+
+  // ✅ Fetch stops for the current bus
   useEffect(() => {
     const fetchStops = async () => {
       const busno = localStorage.getItem("busno");
-      if (busno) {
-        try {
-          const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/bus-stops?busNo=${busno}`);
-          setStops(res.data); // Expected format: [{ stop_key, stop_name, lat, lng }, ...]
-        } catch (err) {
-          console.error("❌ Error fetching stops:", err);
+
+      if (!busno) {
+        console.warn("⚠ No bus number found in localStorage, skipping fetchStops");
+        return;
+      }
+
+      try {
+        const res = await axios.get(`${BASE_URL}/bus-stops?busNo=${busno}`);
+        if (Array.isArray(res.data)) {
+          setStops(res.data);
+          console.log("✅ Stops fetched:", res.data);
+        } else {
+          console.error("❌ Invalid stops data format:", res.data);
         }
+      } catch (err) {
+        console.error("❌ Error fetching stops:", err.response?.data || err.message);
       }
     };
 
     fetchStops();
-  }, []);
+  }, [BASE_URL]);
 
   const toRadians = (degree) => degree * (Math.PI / 180);
 
   const getDistanceMeters = (lat1, lon1, lat2, lon2) => {
-    const R = 6371000; // Earth radius in meters
+    const R = 6371000;
     const dLat = toRadians(lat2 - lat1);
     const dLon = toRadians(lon2 - lon1);
     const a =
       Math.sin(dLat / 2) ** 2 +
       Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
       Math.sin(dLon / 2) ** 2;
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
   };
 
   const startTracking = () => {
     if (!navigator.geolocation) {
-      alert("Geolocation not supported");
+      alert("Geolocation not supported in this browser.");
+      return;
+    }
+
+    const busno = localStorage.getItem("busno");
+    if (!busno) {
+      console.warn("⚠ Cannot start tracking, busno is missing");
       return;
     }
 
@@ -48,15 +69,12 @@ function DriverTracker() {
 
     watchIdRef.current = navigator.geolocation.watchPosition(
       async (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const busno = localStorage.getItem("busno");
-
-        console.log("Live Location:", latitude, longitude);
+        const { latitude, longitude } = position.coords;
+        console.log("📍 Live Location:", latitude, longitude);
 
         // ✅ Send location to backend
         try {
-          await axios.post(`${process.env.REACT_APP_BASE_URL}/update_location`, {
+          await axios.post(`${BASE_URL}/update_location`, {
             driver: busno,
             latitude,
             longitude,
@@ -72,10 +90,10 @@ function DriverTracker() {
 
           if (distance < 150 && !triggeredStopsRef.current.has(stop.stop_key)) {
             triggeredStopsRef.current.add(stop.stop_key);
-            console.log(`✅ Reached ${stop.stop_name}, auto-triggering!`);
+            console.log(`✅ Reached ${stop.stop_name}, sending stop_reached...`);
 
             try {
-              await axios.post(`${process.env.REACT_APP_BASE_URL}/stop_reached`, {
+              await axios.post(`${BASE_URL}/stop_reached`, {
                 stop_key: stop.stop_key,
                 stop_name: stop.stop_name,
                 bus_number: busno,
@@ -86,7 +104,7 @@ function DriverTracker() {
               console.error("❌ Error sending stop_reached:", err.response?.data || err.message);
             }
 
-            // ✅ Update localStorage so UI reflects checked status
+            // ✅ Update checked stops in localStorage
             const storageKey = `checkedStops_${busno}`;
             const prev = JSON.parse(localStorage.getItem(storageKey)) || [];
             const updated = [...new Set([...prev, stop.stop_name])];
@@ -95,7 +113,7 @@ function DriverTracker() {
         }
       },
       (error) => {
-        console.error("Error getting location:", error);
+        console.error("❌ Error getting location:", error);
       },
       {
         enableHighAccuracy: true,
@@ -113,7 +131,6 @@ function DriverTracker() {
     setTripActive(false);
   };
 
-  // Auto-start tracking when bus number and stops are available
   useEffect(() => {
     const busno = localStorage.getItem("busno");
     if (busno && stops.length > 0) {
@@ -121,11 +138,10 @@ function DriverTracker() {
     } else {
       stopTracking();
     }
-
-    return stopTracking; // Clean up on unmount
+    return stopTracking;
   }, [stops]);
 
-  return null; // Invisible background tracker component
+  return null;
 }
 
 export default DriverTracker;

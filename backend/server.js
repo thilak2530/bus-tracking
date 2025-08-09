@@ -26,7 +26,7 @@ const db = new pg.Pool({
   ssl: { rejectUnauthorized: false },
 });  
 
-
+console.log("Allowed frontend URL:", process.env.FRONTEND_URL); 
 
 
 db.query("SELECT 1")
@@ -40,6 +40,7 @@ db.query("SELECT 1")
 app.use(cors({
   origin: [process.env.FRONTEND_URL],
   methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
@@ -198,7 +199,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [process.env.FRONTEND_URL],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST","OPTIONS"],
     credentials: true
   }
 });
@@ -351,6 +352,32 @@ app.post("/driver/complete-trip", async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post("/update_location", async (req, res) => {
   const { driver, latitude, longitude } = req.body;
 
@@ -427,6 +454,24 @@ app.post("/stop_reached", async (req, res) => {
   }
 });
 console.log("✅ /stop_reached route registered");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
