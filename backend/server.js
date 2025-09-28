@@ -286,9 +286,9 @@ app.get("/bus-stops",async(req,res)=>{
 })
 
 app.post("/add-bus-stops",async(req,res)=>{
-  const {busNo,alpha,stopp,arrived,depart} = req.body;
+  const {busNo,alpha,stopp,arrived,depart,latitude,longitude} = req.body;
   try{
-    const busstops = await db.query("INSERT INTO bus_stops VALUES ($1, $2, $3, $4, $5)",[busNo,alpha,stopp,arrived,depart]);
+    const busstops = await db.query("INSERT INTO bus_stops VALUES ($1, $2, $3, $4, $5, $6, $7)",[busNo,alpha,stopp,arrived,depart,latitude,longitude]);
     res.json({success:true});
   }
   catch(error){

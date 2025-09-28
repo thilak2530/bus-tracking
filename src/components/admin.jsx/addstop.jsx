@@ -7,6 +7,8 @@ function AddStop(){
     const[bus_stopp,setbus_stopp]=useState("");
     const[bus_arrive,setbus_arrive]=useState("");
     const[bus_depart,setbus_depart]=useState("");
+    const[bus_latitude,setbus_latitude]=useState("");
+    const[bus_longitude,setbus_longitude]=useState("");
 
 
 
@@ -30,6 +32,14 @@ function AddStop(){
         setbus_depart(event.target.value);
         
     }
+    const handlec = (event)=>{
+        setbus_latitude(event.target.value);
+        
+    }
+    const handle = (event)=>{
+        setbus_longitude(event.target.value);
+        
+    }
 
 
     function handleclick(){
@@ -43,7 +53,9 @@ function AddStop(){
                 alpha: bus_alpha,              
                 stopp: bus_stopp,    
                 arrived: bus_arrive,
-                depart: bus_depart
+                depart: bus_depart,
+                latitude:bus_latitude,
+                longitude:bus_longitude
             })
             })
             .then(res => res.json())
@@ -68,6 +80,8 @@ function AddStop(){
             <input type="text" onChange={handlechan}placeholder="stop-name"/>
             <input type="text" onChange={handlecha}placeholder="stop-arrive-time"/>
             <input type="text" onChange={handlech}placeholder="stop-depart-time"/>
+            <input type="number" onChange={handlec}placeholder="latitude"/>
+            <input type="number" onChange={handle}placeholder="longitude"/>
             <input type="submit" onClick={handleclick}/> 
         </div>
     );
